@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        @media screen and (orientation:landscape) {
+        body {
+            background-color: black;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.721);
+            width: 100%;
+            box-shadow: 1px 3px 10px rgb(35, 255, 54);
+            height: 70px;
+            z-index: 2;
+            
+        }
+        nav span {
+            color: gray;
+            margin-right: 20px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .navlinks {
+            color: gray;
+            font-size: .9rem;
+            letter-spacing: .08rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+        .navlinks:hover {
+            color: rgb(35, 255, 54);
+            transition: .5s ease-in-out;
+        }
+        .active {
+            color: rgb(35, 255, 54);
+        }
+        .navlinks::before,
+        .active::before {
+            width: 0;
+            height: .1rem;
+            position: absolute;
+            content: '';
+            background: rgb(35, 255, 54);
+            bottom: -10px;
+            left: 0;
+            transition: .5s ease-in-out;
+        }
+        .navlinks:hover:before,
+        .active:hover:before {
+            width: 100%;
+        }
+        .bi-list {
+            font-size: 30px;
+            color: rgb(35, 255, 54);
+            display: none;
+        }
+        .article_matter{
+            font-size: 20px;
+        }
+        .hover-image {
+            width: 300px;
+            height: 70px;
+            background-image: url("./KaRTHIKEYA (4).jpg");
+            background-size: contain;
+            transition: background-image .5s ease-in-out;
+            background-repeat: no-repeat;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+
+        .hover-image:hover {
+            background-image: url("./KaRTHIKEYA (5).jpg");
+        }
+        #education {
+            padding: 2em 2em 0 2em;
+            background-color: black;
+            color: gray;
+        }
+
+        #education h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2em auto;
+            padding: 1em 0;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #333;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 1em 2em;
+            text-align: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background-color: #c0ffba;
+            padding: 1em;
+            border-radius: 8px;
+            color: black;
+            height: 240px;
+            width: 250px;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 3px 3px 8px rgb(35, 255, 54);
+            transition: 0.5s ease-in-out;
+        }
+        .achievements {  
+            position: absolute;
+            top: 10%;
+            width: 250px;
+            text-align: left;
+            color: lightslategray;
+        }
+
+        .timeline-item:nth-child(odd) .achievements {
+            left: -220px; 
+        }
+
+        .timeline-item:nth-child(even) .achievements {
+            right: -250px;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+            line-height: 22px;
+        }
+        .achievements li {
+            margin-bottom: 10px;
+        }
+        .achievements ul li::before {
+            content: "➔";
+            color: green;
+            margin-right: 8px;
+        }
+
+        .skills-section {
+            padding:20px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            
+            margin: 0 auto;
+        }
+        .skill {
+            width: 20%;
+            padding: 15px;
+            text-align: left;
+            background-color: #c0ffba;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .skill:hover{
+            box-shadow: 2px 2px 8px rgb(35, 255, 54);
+            transition: 0.2s ease-in-out;
+        }
+
+        .skill h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .skill p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0 0;
+        }
+    
+        .gif-section {
+            text-align: center;
+            margin-top: 80px;
+        }
+        .animated-gif {
+            width: 650px; 
+            border-radius: 8px;
+            height: 400px;
+        }
+        #home{
+            margin-top: -60px;
+        }
+        
+
+        .projects-section {
+            margin: 30px;
+            padding-top: 80px;
+            padding-left: 80px;
+            display: flex; 
+            align-items: center; 
+            
+        }
+
+        .card {
+            background-color: #c0ffba;
+            margin: 20px;
+            width: 500px;
+            display: flex; 
+            align-items: center; 
+            box-shadow: 0 2px 5px rgb(35, 255, 54);
+            margin-top: 30px;
+        }
+        .card-content {
+            display: flex; 
+            align-items: center;
+            justify-content: space-between
+           
+        }
+
+        .card img {
+            height: 150px; 
+            width: 220px;
+            
+        }
+        .card h3 {
+            text-align: center;
+            width: 100%; 
+            margin: 0; 
+        }
+        .card:nth-child(even) {
+            left: 0;
+        }
+        .card:nth-child(odd) {
+            left: 55%;
+        }
+        .project-link {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background-color: #4CAF50; 
+            color: #fff;
+            
+        }
+        .Project-heading{
+            margin-right: 40px;
+        }
+        .project-link:hover {
+            background-color: #45a049;
+        }
+        .typing-heading {
+        font-size: 2em;               
+        font-weight: 400;
+        color: #333;
+        font-family:  sans-serif; 
+        text-align: center;              
+        border-bottom: 1px solid black;
+        box-shadow: 1px 1px 3px black;
+        }
+
+        #certifications {
+            padding: 2em;
+            color: #808080;
+        }
+
+        #certifications h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .certifications-box {
+            border: 1px solid #555;
+            border-radius: 8px; 
+            padding: 1.5em;
+            margin: 0 auto;
+            max-width: 600px; 
+        }
+
+        .certificate-list .certificate {
+            margin-top: 0.5em;
+            font-size: 18px;
+        }
+
+        .certificate-list .certificate a {
+            color:   rgba(59, 173, 69, 0.765);
+            text-decoration: none;
+        }
+        .certificate-list .certificate a:hover {
+            color:rgb(35, 255, 54);
+        }
+        details summary:hover {
+            color:rgb(35, 255, 54);
+        }
+        details {
+            cursor: pointer; 
+        }
+
+        summary {
+            list-style: none; 
+            outline: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; 
+        }
+        footer {
+            background-color: #111;
+            color: gray;
+            padding: 2em;
+            align-items: center;
+            margin-top: 2em;
+            
+
+        }
+        footer h2 {
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5em 0;
+        }
+        footer p span {
+            margin-right: 10px;
+        }
+        footer p span img{
+            height: 25px;
+            width: 25px;
+        }
+        .footer-copyright {
+            font-size: 0.9em;
+            color: #888;
+            border-top: 1px solid #333;
+            padding-top: 1em;
+            margin-top: 1em;
+            text-align: center;
+        }
+        .codechef{
+            background-color: #5B3219;
+            border-radius: 5px;
+
+        }
+
+        footer a {
+            color:  rgba(59, 173, 69, 0.765);
+            text-decoration: none;
+            
+        }
+
+        footer a:hover {
+            color: rgb(35, 255, 54);
+        }
+
+        .footer-content {
+            margin-bottom: 1em;
+        }
+
+        
+    }
+    @media screen and (orientation:portrait) {
+        body {
+            background-color: black;
+        }
+
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.721);
+            width: 100%;
+            box-shadow: 1px 3px 10px rgb(35, 255, 54);
+            z-index: 2;
+            position: fixed;
+            top: 0;
+        }
+        
+
+        nav {
+            margin-top: -30px;
+        
+        }
+
+        .hover-image {
+            width: 210px;
+            height: 70px;
+            background-image: url("./KaRTHIKEYA (4).jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: background-image .5s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navlinks {
+            color: gray;
+            font-size: .8rem;
+            position: relative;
+            text-transform: uppercase;
+            margin-left: 7px;
+        }
+
+        .active {
+            color: rgb(35, 255, 54);
+        }
+
+        .navlinks:hover {
+            color: rgb(35, 255, 54);
+            transition: .5s ease-in-out;
+        }
+        .article_matter{
+            font-size: 20px;
+        }
+
+        #education {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            color: gray;
+        }
+
+        #education h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+            line-height: 22px;
+            width:100%;
+            max-width: 300px;
+            
+        }
+        .achievements li {
+            margin-bottom: 10px;
+        }
+        .achievements ul li::before {
+            content: "➔";
+            color: green;
+            margin-right: 8px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 0;
+            width: 100%;
+            margin-left: 5em;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            padding: 1em 0;
+            
+        }
+
+        .timeline-content {
+            background-color: #c0ffba;
+            padding: 15px;
+            border-radius: 8px;
+            color: black;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 3px 3px 8px rgb(35, 255, 54);
+            text-align: center;
+        }
+        
+
+        .skills-section {
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 15px;
+        }
+
+        .skill {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            background-color: #c0ffba;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .gif-section {
+            text-align: center;
+            margin-top: 120px;
+        }
+
+        .animated-gif {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .projects-section {
+            width: 100%;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #c0ffba;
+            margin-top: 20px ;
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgb(35, 255, 54);
+            font-size: small;
+        }
+
+        .card img {
+                height: 80px; 
+                width: 120px;
+            }
+
+        .card h3 {
+            font-size: 1.2em;
+            margin-top: 10px ;
+            text-align: center;
+        }
+
+        .project-link {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+        }
+
+        .project-link:hover {
+            background-color: #45a049;
+        }
+        
+        #certifications h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .certifications-box {
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 1.5em;
+            max-width: 350px;
+            display: flex;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+
+        .certificate-list .certificate {
+            margin: 0.5em 0;
+            
+        }
+
+        .certificate-list .certificate a {
+            color: rgba(59, 173, 69, 0.765);
+            text-decoration: none;
+        }
+
+        .certificate-list .certificate a:hover {
+            color: rgb(35, 255, 54);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: gray;
+            padding: 20px;
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: rgba(59, 173, 69, 0.765);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: rgb(35, 255, 54);
+        }
+
+        .footer-content {
+            margin-bottom: 1em;
+        }
+        footer p span img{
+                height: 25px;
+                width: 25px;
+            }
+            .footer-copyright {
+                font-size: 0.9em;
+                color: #888;
+                border-top: 1px solid #333;
+                padding-top: 1em;
+                margin-top: 1em;
+                text-align: center;
+            }
+            .codechef{
+                background-color: #5B3219;
+                border-radius: 5px;
+
+            }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hover-image"></div>
+        <div class="me-5">  
+            <nav>
+                <span><a href="#" class="navlinks active">HOME</a></span>
+                <span><a href="#education" class="navlinks">EDUCATION</a></span>
+                <span><a href="#skills" class="navlinks">SKILLS</a></span>
+                <span><a href="#projects" class="navlinks">PROJECTS</a></span>
+                <span><a href="#contact" class="navlinks">CONTACT</a></span>
+                
+            </nav>
+        </div>
+        
+    </header>
+    <main>
+        <section class="main_1">
+            <section class="gif-section">
+                <img src="./KARTHIKEYA.gif" alt="Animated GIF Example" class="animated-gif container-fluid">
+            </section>
+            <section class="container-fluid  section_1" id="home">
+                <p class="article_matter" style="color: lightslategray;">I am currently pursuing a B.Sc. Honours in Artificial Intelligence and Data Science at the Indian Institute of Technology Guwahati. With a strong foundation in programming, web development, and data science, I am dedicated to leveraging these skills in impactful projects and research. Outside of academics, I enjoy playing badminton and staying updated with emerging technologies, always eager to broaden my expertise.</p>
+            </section>
+        </section>
+        <section id="education" class="container-fluid">
+            <h2 class="mt-5">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B.Sc Honours in AI and DS</h3>
+                        <br>
+                        <p>Indian Institute of Technology Guwahati<br>Year: 2023-present</p>
+                    </div>
+                    <div class="achievements">
+                        <ul>
+                            <li>Achieved a GPA of 8.31 in the second trimester.</li>
+                            <li>Secured a GPA of 8.23 in the third trimester.</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Board of Intermediate Education</h3>
+                        <br>
+                        <p>Sri Venkateswara Classes<br>Year: 2021-2023<br>Grade: 91.6%</p>
+                    </div>
+                    <div class="achievements">
+                        <ul>
+                            <li>Scored 91.6% in Board Exams </li>
+                            <li>Secured a 94.63 percentile in the Joint Entrance Examination (JEE Mains)</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Board of Secondary Education</h3>
+                        <br>
+                        <p>J Y High School<br>Year: 2021<br>Grade: 98.67%</p>
+                    </div>
+                    <div class="achievements">
+                        <ul>
+                            <li>Achieved 98.67% in Board Exams</li>
+                            <li>Achieved qualification for the National Standard Examination in Junior Science (NSEJS), a highly competitive exam with only 300 students selected from across India. Advanced to the INJSO (Indian National Junior Science Olympiad) stage.</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        </section>
+        
+        
+        <!-- Skills Section -->
+            <section id="skills"></section>
+            <section class="skills-section container-fluid">
+                <h2 style="color: gray; margin-top: 60px;" class="mb-5" >Skills</h2>
+                <div class="skills-container">
+                    <div class="skill">
+                        <h4>HTML</h4>
+                        <p>Intermediate</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>CSS</h4>
+                        <p>Intermediate</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>CPP</h4>
+                        <p>Intermediate</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>JAVA</h4>
+                        <p>Basic</p>
+                    </div>
+                    <div class="skill">
+                        <h4>Java Script</h4>
+                        <p>Basic</p>
+                    </div>
+                    
+                    <div class="skill">
+                        <h4>Python</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>C Programming</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>SQL</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>Power BI</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>Data Analysis In Excel</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>Pandas</h4>
+                        <p>Basic</p>
+                    </div>
+
+                    <div class="skill">
+                        <h4>Designing</h4>
+                        <p>Basic</p>
+                    </div>
+                </div>
+            </section>
+            <section id="projects"></section>
+            <section class="projects-section">
+                <h2 class="Project-heading" style="color: gray;" >My Projects</h2>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="card">
+                            <h3 class="typing-heading">Portfolio</h3>
+                            <div class="card-content p-2">
+                                <a href="https://karthikeyabendi.vercel.app/"><img src="./Portfolio_2.jpg" class="" alt="Project 1 Image"></a>
+                                <div>
+                                    <p><strong>Purpose:</strong> A personal portfolio website to showcase my skills, projects, and experience.</p>
+                                    <p><strong>Technologies Used:</strong> HTML, CSS</p>
+                                    <a href="https://karthikeyabendi.vercel.app/" target="_blank" class="project-link btn btn-success">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="typing-heading">YouTube Clone</h3>
+                            <div class="card-content p-2">
+                                <a href="https://github.com/BendiKarthikeya/Webdevelopment_ioi/blob/main/Nithin%20sir's/FashionStore/src/youtube.html"><img src="./Youtube_man.jpg" class="" alt="Project 2 Image"></a>
+                                <div>
+                                    <p><strong>Purpose:</strong> Designed a YouTube-style interface to practice layout design and video embedding using HTML and CSS.</p>
+                                    <p><strong>Technologies Used:</strong> HTML, CSS</p>
+                                    <a href="https://github.com/BendiKarthikeya/Webdevelopment_ioi/blob/main/Nithin%20sir's/FashionStore/src/youtube.html" target="_blank" class="project-link btn btn-success">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="typing-heading">Amazon Clone</h3>
+                            <div class="card-content p-2">
+                                <a href="https://github.com/BendiKarthikeya/Amozon-Clone/tree/main"><img src="./amazon.jpg" class="" alt="Project 3 Image"></a>
+                                <div>
+                                    <p><strong>Purpose:</strong>This project replicates key design elements of the Amazon website, including product listings, navigation bars, and a user-friendly layout.</p>
+                                    <p><strong>Technologies Used:</strong> HTML, CSS</p>
+                                    <a href="https://github.com/BendiKarthikeya/Amozon-Clone/tree/main" target="_blank" class="project-link btn btn-success">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="certifications">
+                <h2>Certifications</h2>
+                <div class="certifications-box">
+                    <div class="certificate-list">
+                        <div class="certificate">
+                            <a href="https://drive.google.com/file/d/17USRuZQqRtE0iY8ZDNnQNskwASsEpVZP/view?usp=sharing" target="_blank">Generative AI Primer</a>
+                        </div>
+                        <div class="certificate">
+                            <a href="https://drive.google.com/file/d/1SB4KMEO0G8lowikZfYNWC5OGYJHo0puC/view?usp=drive_link" target="_blank">Infographic in Canva</a>
+                        </div>
+                        <div class="certificate">
+                            <a href="https://drive.google.com/file/d/12PPxRgxodBoFI_pwIgyv1lxij_5seT_c/view?usp=sharing" target="_blank">Trustworthy Generative AI</a>
+                        </div>
+                        <div class="certificate">
+                            <a href="https://drive.google.com/file/d/1ztuzoRxn6p-MHki4ewuNi_xOjEDwt-BQ/view?usp=sharing" target="_blank">Introduction to Generative AI </a>
+                        </div>
+                        <details>
+                            <summary>Read More</summary>
+                            <div class="certificate">
+                                <a href="https://drive.google.com/file/d/1u2_bfxDzM5kyEn9P4m6_8Fc7GkY6wyA1/view?usp=sharing" target="_blank">Create a Promotional Video using Canva</a>
+                            </div>
+                            <div class="certificate">
+                                <a href="https://drive.google.com/file/d/1h0VO3eWUUTDv7katyerplHzNIJujs0hR/view?usp=sharing" target="_blank">CodeChef-500 difficulty rating</a>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+    </main>
+        <footer id="contact">
+            <h2>Contact</h2>
+            <div class="footer-content-main d-flex justify-content-around">
+                <div class="footer-content">
+                    
+                    <p><span class="bi bi-phone"></span><strong>Phone : </strong> <span style="color:  rgba(59, 173, 69, 0.765);">+91 9491392074</span></p>
+                    <p><span class="bi bi-envelope"></span><strong>Email:</strong> <a href="mailto:karthikeyabendi05@gmail.com">karthikeyabendi05@gmail.com</a></p>
+                    <p><span class="bi bi-linkedin"></span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/karthikeyabendi/" target="_blank">LinkedIn Profile</a></p>
+                    <p><span class="bi bi-github"></span><strong>GitHub:</strong> <a href="https://github.com/BendiKarthikeya" target="_blank">GitHub Profile</a></p>
+                    <p><span class="bi bi-pencil-fill"></span><strong>Blog:</strong> <a href="https://karthikeya07.hashnode.dev" target="_blank">Blog</a></p>
+                </div>
+                <div class="footer-content">
+                    <p><span><img src="./leetcode.svg" alt="leetcode"></span><strong>LeetCode:</strong> <a href="https://leetcode.com/u/karthikeyabendi05/">LeetCode Profile</a></p>
+                    <p><span><img src="./code-forces.svg" alt="code-forces"></span><strong>Codeforces:</strong> <a href="https://codeforces.com/profile/B.karthikeya" target="_blank">Codeforces Profile</a></p>
+                    <p><span><img src="./cc.svg" class="codechef" alt="code-chef"></span><strong>CodeChef:</strong> <a href="https://www.codechef.com/users/karthikeya070" target="_blank">CodeChef Profile</a></p>
+                    <p><span ><img src="./hackerrank.svg" alt="hackerrank"></span><strong>HackeRank:</strong> <a href="https://www.hackerrank.com/profile/Karthikeya07" target="_blank">HackeRank Profile</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; 2024 Bendi Karthikeya. All rights reserved.</p>
+            </div>
+        </footer>
+            
+            
+</body>
+</html>
