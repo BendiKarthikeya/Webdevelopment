@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        html,
+        body{
+            height: 100%;
+            width: 100%;
+            background-color: #111;
+            
+        }
+        body{
+            overflow-x: hidden;
+        }
+        #page1{
+            background-color: black;
+            height: 100%;
+            width: 100%;
+        }
+        #page2{
+            background-color: lightblue;
+            height: 100%;
+            width: 100%;
+        }
+        #page3{
+            background-color: black;
+            height: 100%;
+            width: 100%;
+        }
+        #page2 h1{
+            font-size: 40vw;
+            text-transform: uppercase;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        
+    </div>
+    <div id="page2">
+        <h1>Experiences</h1>
+    </div>
+    <div id="page3">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        gsap.to("#page2 h1",{
+            transform:"translateX(-150%)",
+            scrollTrigger:{
+                trigger:"#page2",
+                scroller:"body",
+                markers:true,
+                start:"top 0%",
+                end:"top -100%",
+                scrub:2,
+                pin:true
+            }
+        })
+    </script>
+</body>
+</html>
+
+<!-- 1. GSAP used for animate elements
+2. ScrollTrigger used for animate elements on basis of scrolling
+properties of scrollTrigger
+- trigger: 'select element you wants to trigger',
+-scroller: " body most of the times",
+-start : "animation start point",
+-end: "animation end point",
+-markers : " Boolean" -helps us to make perfect animtion  we can remove it later,
+-scrub: "Boolean or any no. between 1-5" -to make animation back and forth,
+-pin : pin the page while animating elements
+ ** note: while using pin property make sure trigger must be parent element -->

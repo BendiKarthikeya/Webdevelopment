@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        html,
+        body{
+            height: 100%;
+            width: 100%;
+            background-color: #111;
+        }
+        #box1{
+            width: 250px;
+            height: 250px;
+            background-color: lightseagreen;
+        }
+        #box2{
+            width: 250px;
+            height: 250px;
+            background-color: white;
+        }
+        #box3{
+            width: 250px;
+            height: 250px;
+            background-color: royalblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box1">
+
+    </div>
+    <div id="box2">
+
+    </div>
+    <div id="box3">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var tl=gsap.timeline();
+
+        tl.to("#box1",{
+            x:900,
+            duration:1.5,
+            dealy:1
+        })
+        tl.to("#box2",{
+            x:900,
+            duration:1.5,
+            backgroundColor:"yellow",
+            dealy:1
+        })
+        tl.to("#box3",{
+            x:900,
+            duration:1.5,
+            dealy:1,
+            rotate:720
+        })
+        
+    </script>
+</body>
+</html>
