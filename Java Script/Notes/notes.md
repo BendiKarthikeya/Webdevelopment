@@ -191,6 +191,10 @@ JavaScript is commonly used to validate user input before sending data to the se
     <script src="script.js" type="text/javascript"></script>
     ```
 
+### Window hieracrchy
+
+<img src="./Images/window_tree.png" height="400" width="600">
+
 ### Bulk loading
 
 <img src="./Images/bulkLoading.png" height="300" width="500">
