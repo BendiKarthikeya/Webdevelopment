@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Product{
+            _name;
+            _price;
+            _qty;
+            
+            set name(newName){
+                this._name=newName;
+            }
+            set price(newPrice){
+                this._price=newPrice;
+            }
+            set qty(newQty){
+                this._qty=newQty;
+            }
+            get name(){
+                return this._name;
+            }
+            get price(){
+                return this._price;
+
+            }
+            get qty(){
+                return this._qty;
+            }
+        }
+        let obj=new Product;
+        obj.name="TV";
+        console.log("Product name is :: "+ obj.name);
+
+    </script>
+</body>
+</html>

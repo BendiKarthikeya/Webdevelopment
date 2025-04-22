@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            font-size: 35px;
+            border: 1px dotted purple;
+            padding: 10px;
+            margin: 25px;
+            background-color: black;
+            color: white;
+        }
+        @media print {
+            button {
+                font-size: 35px;
+                border: 1px dotted purple;
+                padding: 10px;
+                margin: 25px;
+                background-color: black !important;
+                color: white;
+                /* -webkit-print-color-adjust: exact !important;*/
+                /* for brower background color will not change  we should important and -webkit-print-color-adjust  */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <button onclick="printTicket()">
+        PrintTicket
+    </button>
+    <script type="text/javascript" src="../src/scripts/ticketprint.js">
+
+    </script>
+</body>
+</html>
