@@ -242,7 +242,7 @@ Syntax:
 </script>
 ```
 
-### JavaScript Properties
+## JavaScript Properties
 
 <img src='../Notes/Images/attributes.png' heigth='400' width='400'> 
 
@@ -256,3 +256,120 @@ Syntax:
 ### Id selectors
 
 <img src='../Notes/Images/id_selector.png' heigth='400' width='1000'> 
+
+
+## Accessing the Elements in JS
+
+### <u>By ID Name</u>
+
+**document.getElementByTagName() : Element**
+
+ For Code <a href="../JavaScript examples/using-id-code.html">Click on this</a>
+
+### <u>By Class Name</u>
+
+**document.getElementByClassName() : HTMLCollection[]**
+
+* For Code <a href="../JavaScript examples/using-class-code.html">Click on this</a>
+
+* How to convert HTMLCollection to Array?
+ans. arrayElements=Array.from(HTMLCollection)
+
+### Working with iterator called "forEach"
+
+* It can be used only on Array object.
+```js 
+callbackfunction = (value,index,arr)=>{
+                    //value
+                    //index
+                    //arr
+
+}
+forEach(callbackfunction)
+```
+
+### <u>By Tag Name</u>
+
+**document.getElementByTagName() : HTMLCollection[]**
+
+ For Code <a href="../JavaScript examples/using-tag-name.html">Click on this</a>
+
+ Another approach to convert HTMLCollection to Array "[...HTMLCollection]"
+
+### <u>By Name</u>
+
+**document.getElementByName() : NodeList**
+
+ For Code <a href="../JavaScript examples/using-name-code.html">Click on this</a>
+
+ While working with NodeList,directly we an use forEach() without any conversion
+
+### <u>By QuerySelector</u>
+
+ 
+
+**document.querySelector(cssSelector) : Element**
+
+**document.querySelectorAll(cssSelector) : NodeList**
+
+ querySelector(cssSelector) | querySelectorAll(cssSelector) to target the element in a HTML page.
+
+ For Code <a href="../JavaScript examples/querySelector-code.html">Click on this</a>
+
+## FAQ
+
+### 1) Why do we need do many methods to target HTML page using javascript , when we can target directly with single method called 'querySelectorXXX()'?
+**Ans.**
+Older version of javascript added methods like getElementById( ), getElementByClassName( ), getElementByTagName( ) ,. . . . . . <br>
+As css become popular, to give the direct support of accessing the elements using CSS methods like querySelector( ) and querySelectorAll( ) were added.
+
+### 2) Difference between querySelector and getElementBy
+
+> querySelector( ) | querySelectorAll( ) | getElementById( ) ===> works only for static DOM
+<br>
+
+>  getElementsByClassName( ) | getElementsByTagName( ) | getElementsByName( ) ===> Dynamic DOM
+
+* For Code <a href="../JavaScript examples/static-dynamic-dom.html">Click on this</a>
+
+**NOTE:**
+HTMLCollection is a object first we need to convert to array and we should use it 
+```js
+elements = document.getElementsByClassName("box");
+console.log(typeof elements); // Output: object
+
+Array.from(elements).forEach((value) =>{
+        value.style.cssText = "color: red; font-size: 25px; font-weight: bold;";
+    })
+  
+elements.forEach((value) =>{
+        value.style.cssText = "color: red; font-size: 25px; font-weight: bold;";
+    })
+
+```
+
+## JavaScript Output Techniques
+
+- **alert**
+- **confirm**
+- **document.write() | document.writeln()**
+- **innerHTML | outerHTML**
+- **innerText | outerText**
+- **textContent**
+- **console.XXXXX() [log(), warn(), error(), info(), debug()]**
+
+1) ### alert(msg) : void
+    * It as ok button
+    * It returns undefined when the user clicks ok button | presses esc keyboard
+    * It is used to just to display some messages.
+    
+    **Limitation**
+    * No styling can be added to the message.
+    * No cancel button, so to come out of the actions the user should click 'ecs' button.
+
+2) ### confirm : boolean
+    * It has ok and cancel button
+    * It returns true when user clicks on 'ok' button otherwise it return false.
+
+    **Limitation**
+    * No styling can be added to the message.

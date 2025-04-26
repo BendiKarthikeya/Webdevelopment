@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function changeEffects(){
+            console.log("happy");
+            ele=document.getElementsByTagName("li");
+            [...ele].forEach(element => {
+                element.style.cssText= "margin:10px; color:gold;";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>My Shopping List</h2>
+    <ul id="shopping-list">
+        <li>IPHONE</li>
+        <li>ONEPLUS</li>
+    </ul>
+    <button onclick="changeEffects()">Click</button>
+</body>
+</html>
