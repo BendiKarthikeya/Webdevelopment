@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #happy{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="happy">
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta impedit reiciendis quo, quos cupiditate suscipit distinctio debitis? Velit pariatur maxime eum, saepe temporibus voluptatum esse mollitia ut. Dolores, magni eligendi?
+        </p>
+    </div>
+    <button onclick="show()">
+        show
+    </button>
+    <script>
+        function show(){
+            ele=document.querySelector("#happy");
+            ele.style.display="block";
+        }
+    </script>
+</body>
+</html>

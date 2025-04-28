@@ -39,7 +39,7 @@ JavaScript can be processed using various engines and compilers:
 - **Ivy**
 - **Babel**
 - **Node**
-- **VB**
+- **V8**
 
 
 ## Programming Paradigms Supported
@@ -315,6 +315,10 @@ forEach(callbackfunction)
  querySelector(cssSelector) | querySelectorAll(cssSelector) to target the element in a HTML page.
 
  For Code <a href="../JavaScript examples/querySelector-code.html">Click on this</a>
+ 
+ ### Working with different techniques to access DOM
+<img src="./Images/different_DOM.png" height="400" width="1000">
+
 
 ## FAQ
 
@@ -332,6 +336,7 @@ As css become popular, to give the direct support of accessing the elements usin
 
 * For Code <a href="../JavaScript examples/static-dynamic-dom.html">Click on this</a>
 
+
 **NOTE:**
 HTMLCollection is a object first we need to convert to array and we should use it 
 ```js
@@ -346,6 +351,46 @@ elements.forEach((value) =>{
         value.style.cssText = "color: red; font-size: 25px; font-weight: bold;";
     })
 
+```
+## Static vs. Dynamic DOM Access — What's the difference?
+
+### Static DOM Access
+* Happens once, at the time of accessing.
+* If DOM elements change later, the reference does not update.
+* Example: querySelectorAll() returns a NodeList, which is static.
+
+
+### Dynamic (Live) DOM Access
+* Reflects changes automatically.
+* If new elements are added or removed, the collection updates itself.
+* Example: getElementsByClassName() returns an HTMLCollection, which is live.
+
+### Static vs. Dynamic DOM
+<img src="./Images/staticVSdynamic.png" height="400" width="1000">
+
+### Example:
+```html
+<div id="container">
+  <p class="item">Item 1</p>
+  <p class="item">Item 2</p>
+</div>
+
+<button onclick="addItem()">Add Item</button>
+
+<script>
+  const liveList = document.getElementsByClassName("item"); // Dynamic (live)
+  const staticList = document.querySelectorAll(".item");    // Static (snapshot)
+
+  function addItem() {
+    const p = document.createElement("p");
+    p.className = "item";
+    p.textContent = "New Item";
+    document.getElementById("container").appendChild(p);
+
+    console.log("Live (HTMLCollection):", liveList.length);   // Updates
+    console.log("Static (NodeList):", staticList.length);     // Does not update
+  }
+</script>
 ```
 
 ## JavaScript Output Techniques
