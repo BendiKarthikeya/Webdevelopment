@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function deleteRecord(){
+            flag = confirm("Are you sure you want to delete the Record??");
+            if(flag){
+                document.querySelector("h2").innerText="Record deleted succesfully";
+            }
+            else{
+                document.querySelector("p").textContent="You have pressed cancel button";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Click the Button</h1>
+    <h2></h2>
+    <p></p>
+    <button onclick="deleteRecord()">Click</button>
+</body>
+</html>

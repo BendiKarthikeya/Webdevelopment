@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createFolder(){
+            input=prompt("Enter the folder Name")
+            if(input==null){
+                document.querySelector("h2").textContent='User has clicked on cancel button';
+            }
+            else if(input.length==0){
+                document.querySelector("h2").textContent='Without Entering the folder name User has click on Ok button';
+            }
+            else{
+                document.querySelector("h2").outerHTML='<h1 style="color:green; font-family:Times New Roman">'+input+'</h1>'
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="createFolder()">Click Folder</button>
+    <h2></h2>
+</body>
+</html>

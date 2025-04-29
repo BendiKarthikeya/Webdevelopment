@@ -51,10 +51,10 @@ JavaScript supports a variety of programming techniques:
 3. Imperative Programming  
 4. Object-Oriented Programming (OOP)
 
-> **Note:** JavaScript is **not** a fully object-oriented programming language. It supports only some OOP features.
+> **🔔Note:** JavaScript is **not** a fully object-oriented programming language. It supports only some OOP features.
 
 
-## Usage of JavaScript in Project Layers
+## 🧩Usage of JavaScript in Project Layers
 
 JavaScript can be used at various levels of a software project:
 
@@ -242,7 +242,7 @@ Syntax:
 </script>
 ```
 
-## JavaScript Properties
+## JavaScript Properties vs testContent
 
 <img src='../Notes/Images/attributes.png' heigth='400' width='400'> 
 
@@ -250,12 +250,58 @@ Syntax:
 
 <img src='../Notes/Images/text_content.png' heigth='400' width='400'> 
 
+
+
+
 > #### If we target the element using DOM hieracrchy it might result in code breaks when DOM structure is changed.
 **Solution:** use ID and target the element 
 
-### Id selectors
+> 💻 Related Code : 
+<a href="../JavaScript examples/dom-hierarchy-code.html">Click on this</a>
+
+### ⚠️ Disadvantage of Using DOM Hierarchy for Targeting Elements
+
+- If we target elements using **DOM hierarchy**, the code might **break** when the DOM structure is altered or changed.
+
+
+- ✅ Solution : Use **ID** to target the element directly and reliably:
+  ```javascript
+  document.getElementById("myElement");
+  ```
+
+
+### 🆔 Targeting Elements Using ID Selector
 
 <img src='../Notes/Images/id_selector.png' heigth='400' width='1000'> 
+
+
+- We use the method:
+  ```javascript
+  const oneElement = document.getElementById('idname');
+  ```
+- If there are multiple elements with the **same ID**, the method will return only the first matching element.
+  ```javascript
+  document.getElementById("idname");
+  ```
+
+### 🎨 Style Binding to HTML Elements
+
+- To bind a single CSS property to an element:
+  ```javascript
+  element.style.property = "value";
+  ```
+- ✅ To set multiple CSS properties in one line:
+  ```javascript
+  element.style.cssText = "cssKey1: value1; cssKey2: value2;";
+
+  element.style.cssText = "color: blue; background-color: yellow;";
+  ```
+
+> 💻 Related Code : 
+<a href="../JavaScript examples/using-multiple-id.html">Click on this</a>
+
+
+
 
 
 ## Accessing the Elements in JS
@@ -279,13 +325,14 @@ ans. arrayElements=Array.from(HTMLCollection)
 
 * It can be used only on Array object.
 ```js 
-callbackfunction = (value,index,arr)=>{
-                    //value
-                    //index
-                    //arr
+const callbackFunction = (value, index, arr) => {
+  // value -> current element
+  // index -> index of the current element
+  // arr   -> the entire array
+};
 
-}
-forEach(callbackfunction)
+// Usage
+array.forEach(callbackFunction);
 ```
 
 ### <u>By Tag Name</u>
@@ -315,7 +362,7 @@ forEach(callbackfunction)
  querySelector(cssSelector) | querySelectorAll(cssSelector) to target the element in a HTML page.
 
  For Code <a href="../JavaScript examples/querySelector-code.html">Click on this</a>
- 
+
  ### Working with different techniques to access DOM
 <img src="./Images/different_DOM.png" height="400" width="1000">
 
@@ -393,7 +440,7 @@ elements.forEach((value) =>{
 </script>
 ```
 
-## JavaScript Output Techniques
+# JavaScript Output Techniques
 
 - **alert**
 - **confirm**
@@ -403,18 +450,187 @@ elements.forEach((value) =>{
 - **textContent**
 - **console.XXXXX() [log(), warn(), error(), info(), debug()]**
 
-1) ### alert(msg) : void
-    * It as ok button
-    * It returns undefined when the user clicks ok button | presses esc keyboard
-    * It is used to just to display some messages.
-    
-    **Limitation**
-    * No styling can be added to the message.
-    * No cancel button, so to come out of the actions the user should click 'ecs' button.
+---
 
-2) ### confirm : boolean
-    * It has ok and cancel button
-    * It returns true when user clicks on 'ok' button otherwise it return false.
+| Method                  | Description |
+|--------------------------|-------------|
+| `alert()`                | Shows a simple alert message with an OK button. |
+| `confirm()`              | Displays a message box with OK and Cancel buttons. Returns a boolean. |
+| `document.write()`, `document.writeln()` | Writes directly to the HTML output stream. |
+| `innerHTML`, `outerHTML` | Used to get/set HTML content of elements. |
+| `innerText`, `outerText` | Used to get/set the visible text of elements. |
+| `textContent`            | Retrieves or sets the text content of a node and its descendants. |
+| `console.log()`, `console.warn()`, `console.error()`, `console.info()`, `console.debug()` | Used for debugging outputs to the console. |
 
-    **Limitation**
-    * No styling can be added to the message.
+---
+
+## JavaScript Output Operations 💬
+
+- 1️⃣ **`alert()`** 🚨  
+- 2️⃣ **`confirm()`** ✅❌  
+- 3️⃣ **`document.write()` | `document.writeln()`** 📝  
+- 4️⃣ **`innerHTML` | `outerHTML`** 🔄  
+- 5️⃣ **`innerText` | `outerText`** 📝  
+- 6️⃣ **`textContent`** 🖋️  
+- 7️⃣ **`console.XXXXX()`** [log(), warn(), error(), info(), debug()] 🖥️
+
+
+---
+
+### 1️⃣ `alert(msg)` 🚨: `void`
+- Displays a message with an "OK" button.
+- Returns `undefined` when the user clicks "OK" or presses the "ESC" key.
+- Primarily used to display messages.
+
+#### Limitation 🚫
+- ❌ No styling can be added to the message.
+- ❌ No "Cancel" button, so the user must click "ESC" to exit.
+
+---
+
+### 2️⃣ `confirm(msg)` ✅❌: `boolean`
+- Displays a message with "OK" and "Cancel" buttons.
+- Returns `true` when the user clicks "OK" and `false` when the user clicks "Cancel".
+
+#### Limitation 🚫
+- ❌ No styling can be added to the message.
+
+> 💻 Related Code : 
+<a href="../javascript-output-techniques/confirm-code.html">confirm-code.html</a>
+---
+### 3️⃣ `document.write(msg)` 📝
+
+- Accepts `msg` as a **string** or **HTML elements**.
+- Directly writes content into the HTML document.
+
+---
+
+#### Limitation 🚫
+- `document.write()` can behave **unexpectedly** if used **after** the page has finished loading — it can overwrite the entire document.
+
+
+#### ⚙️ Output Behavior of `document.write()`
+
+##### 🔍 What Happens When You Click the Button?
+
+- 🧨 The entire existing page (including the button, heading, etc.) gets **wiped out**.
+- Only the content inside `document.write(...)` is displayed.
+
+##### ❓ Why Does This Happen?
+
+- After the page finishes loading, `document.write()` acts like:
+  > "Let me 🧹 rebuild the entire document from scratch now!"
+
+> 💻 Related Code : 
+<a href="../javascript-output-techniques/document-write-code.html">javascript-output-techniques</a>
+
+### 4️⃣ `innerHTML` vs `outerHTML` 🧱
+
+- **`innerHTML`**: Adds the element as a **child** to the targeted container or element. 👶  
+- **`outerHTML`**: **Replaces** the entire targeted element with the newly provided one. 🔁
+
+> 💻 Related Code : 
+
+<a href="../javascript-output-techniques/innerHTML-outerHTML.html">javascript-output-techniques</a>
+
+---
+### 5️⃣  `innerText` vs `outerText` ✍️
+
+- Works like `innerHTML` and `outerHTML` ✅  
+- But only for **text content** — no HTML or styles allowed 🛑
+> 💻 Related Code : 
+<a href="../javascript-output-techniques/innerText-outerText.html">innerText-outerText.html</a>
+
+---
+
+### 6️⃣ `textContent` 🖋️
+
+- Used to get or set the **text content** of an element.
+- Returns all the text within an element, **including text from hidden elements**.
+- Does **not parse HTML**—purely works with plain text.
+- Ideal when you're working with content programmatically and **don't need styling awareness**.
+
+
+
+---
+
+#### 📌 Difference: `innerText` vs `textContent`
+
+- **`textContent`**  
+  ✔️ Returns **all text**, including from **hidden elements**  
+  ✔️ **Faster** and better for **raw text**  
+  ✔️ Ignores CSS layout and visibility  
+
+- **`innerText`**  
+  ✔️ Returns only **visible text**  
+  ✔️ Respects **CSS visibility** and **layout**  
+  ✔️ Includes **line breaks and spacing** as shown on screen  
+
+> ⚠️ Use `textContent` for performance.  
+> 🎯 Use `innerText` for accurate, visible representation.
+
+> 💻 Related Code : 
+<a href="../javascript-output-techniques/textContent-innerText.html">textContent-innerText.html</a>
+
+---
+### 7️⃣🧾 Logs
+
+- Logs refer to the **actions performed by the end user**.  
+To **track user behavior or activity**, we use logs in JavaScript (commonly via `console.log()` or other logging tools).
+
+<img src = "../Notes/Images/logPath.png">
+
+> 💻 Related Code : 
+  <a href="../javascript-output-techniques/ConsoleLog-info.html">ConsoleLog-info.html</a>
+---
+
+
+# Javascript input mechanism
+
+a. prompt()  
+b. queryString  
+c. formelements
+
+
+## 📥 JavaScript `prompt` Behavior
+Returns: `string` | `null`
+
+### 🖋️ Description
+The `prompt` function shows a dialog box asking the user for input.  
+Depending on how the user responds, it returns different values:
+
+---
+
+### 🧠 Behavior Table
+
+| User Action                                   | Result                      |
+|-----------------------------------------------|------------------------------|
+| ✅ User enters data and clicks **OK**         | `'data'` (string with value) |
+| ⚪ User leaves input **empty** and clicks **OK** | `''` (empty string)          |
+| ❌ User clicks **Cancel** or presses **ESC**  | `null`                      |
+
+---
+
+✅ **Tip**: Always check if the result is `null` before using the value to avoid errors! 🚀
+
+* prompt("MSG",[default msg]);
+
+<img src = "../Notes/Images/multiPromt.png" width="500">
+
+## 🌐 2. queryString
+
+It is a combination of **URL + queryParameters (Key, Value)**.
+
+To collect the queryString we use **BOM** (Browser Object Model):  
+```javascript
+queryString = location.search;
+```
+
+QueryString data is received as a **string**.  
+String has various methods to process our input:
+
+- a. `slice(start)`
+- b. `indexOf('')`
+
+> 💻 Related Code : 
+  <a href="../javascript-output-techniques/queryString.html">ConsoleLog-info.html</a>

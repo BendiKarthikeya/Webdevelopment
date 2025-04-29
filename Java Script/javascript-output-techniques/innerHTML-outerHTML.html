@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        function deleteRecord() {
+            // Show a confirmation dialog to the user.
+            flag = confirm("Are you sure you want to delete the record");
+
+            if (flag) {
+                // If user confirms (presses OK):
+                // Update the <h3> element with a success message.
+                document.querySelector("h3").innerHTML = "<h2 style='color: green'>Record deleted successfully</h2>";
+            } else {
+                // If user cancels (presses Cancel):
+                // Replace the <p> element completely with a rejection message.
+                document.querySelector("p").outerHTML = "<h1 style='color: red'>Why you clicked on delete</h1>";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <!-- Button to trigger deleteRecord function -->
+    <button onclick="deleteRecord()">Delete record</button>
+
+    <!-- Empty elements to be updated dynamically -->
+    <h3></h3>
+    <p></p>
+</body>
+</html>
