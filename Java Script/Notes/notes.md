@@ -1,4 +1,5 @@
-# JavaScript
+<h1 align="center">⚡️💻 JavaScript 📜✨</h1>
+
 * JavaScript is light weight Interpreted and Just-in-Time Compiled programming language.
 * Light weight refers to memory occupied and how heavy the application is.
 * Interpreted refers to line by line translation.
@@ -335,7 +336,7 @@ const callbackFunction = (value, index, arr) => {
 array.forEach(callbackFunction);
 ```
 
-### <u>By Tag Name</u>
+### 1️⃣ <u>By Tag Name</u>
 
 **document.getElementByTagName() : HTMLCollection[]**
 
@@ -343,7 +344,7 @@ array.forEach(callbackFunction);
 
  Another approach to convert HTMLCollection to Array "[...HTMLCollection]"
 
-### <u>By Name</u>
+### 2️⃣<u>By Name</u>
 
 **document.getElementByName() : NodeList**
 
@@ -351,7 +352,7 @@ array.forEach(callbackFunction);
 
  While working with NodeList,directly we an use forEach() without any conversion
 
-### <u>By QuerySelector</u>
+### 3️⃣<u>By QuerySelector</u>
 
  
 
@@ -442,16 +443,6 @@ elements.forEach((value) =>{
 
 # JavaScript Output Techniques
 
-- **alert**
-- **confirm**
-- **document.write() | document.writeln()**
-- **innerHTML | outerHTML**
-- **innerText | outerText**
-- **textContent**
-- **console.XXXXX() [log(), warn(), error(), info(), debug()]**
-
----
-
 | Method                  | Description |
 |--------------------------|-------------|
 | `alert()`                | Shows a simple alert message with an OK button. |
@@ -462,7 +453,6 @@ elements.forEach((value) =>{
 | `textContent`            | Retrieves or sets the text content of a node and its descendants. |
 | `console.log()`, `console.warn()`, `console.error()`, `console.info()`, `console.debug()` | Used for debugging outputs to the console. |
 
----
 
 ## JavaScript Output Operations 💬
 
@@ -592,7 +582,7 @@ b. queryString
 c. formelements
 
 
-## 📥 JavaScript `prompt` Behavior
+## 📥 1. JavaScript `prompt` Behavior
 Returns: `string` | `null`
 
 ### 🖋️ Description
@@ -634,3 +624,10 @@ String has various methods to process our input:
 
 > 💻 Related Code : 
   <a href="../javascript-output-techniques/queryString.html">ConsoleLog-info.html</a>
+
+
+## Booking Tickets 
+
+> 💻 BookMyShow Code : 
+  <a href="../JavaScript-bootstrap/bookMyShow.html">bookMyShow.html</a>
+
