@@ -603,7 +603,11 @@ Depending on how the user responds, it returns different values:
 
 ✅ **Tip**: Always check if the result is `null` before using the value to avoid errors! 🚀
 
-* prompt("MSG",[default msg]);
+### **prompt("MSG",[default msg]);**
+
+``` javaScript
+prompt("Enter the name", "Enter in UpperCase");
+```
 
 <img src = "../Notes/Images/multiPromt.png" width="500">
 
