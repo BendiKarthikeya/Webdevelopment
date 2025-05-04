@@ -630,8 +630,44 @@ String has various methods to process our input:
   <a href="../javascript-output-techniques/queryString.html">ConsoleLog-info.html</a>
 
 
-## Booking Tickets 
+## Practice Codes
 
 > 💻 BookMyShow Code : 
   <a href="../JavaScript-bootstrap/bookMyShow.html">bookMyShow.html</a>
 
+
+> 💻 Add Product Code : 
+  <a href="../JavaScript-bootstrap/addProduct.html">addProduct.html</a>
+
+## 🚀 How JavaScript Program is Executed (or How JavaScript Runs in the Browser)
+
+* When JavaScript is loaded into the browser's engine, it forms an **Execution Engine** ⚙️  
+  Inside the **Execution Context**, there are two main areas:
+  1. 🧠 **Memory (Variable Environment)** – stores variables and function declarations
+  2. 🔁 **Code Execution (Thread of Execution)** – executes code line by line
+
+### 🖥️ JavaScript in Browser Engine  
+<img src="./Images/js_in_browser.png" height="400">
+
+* First, a **Global Execution Context (GEC)** is created automatically 🌐  
+  Then, whenever a function is invoked, a **new Execution Context** is created and pushed onto the **Call Stack**, as shown below:
+
+### 📦 Execution Context Stack  
+<img src="./Images/executionContext.png" height="300">
+
+---
+
+### 📝 Additional Points:
+
+* JavaScript is **synchronous and single-threaded** 🧵 — it can only execute one command at a time in a specific order.
+
+* The **Call Stack** 📚 keeps track of execution contexts — the one on top is always the currently running context.
+
+* The **Execution Context** is created in two phases:
+  1. 🔍 **Memory Creation Phase** – variables and functions are stored in memory (hoisted).
+  2. ▶️ **Code Execution Phase** – code runs line by line using the stored memory.
+
+---
+
+> 💻 **Execution Context Code Example**:  
+> <a href="../javaScript-flow/executionContext.html">executionContext.html</a>

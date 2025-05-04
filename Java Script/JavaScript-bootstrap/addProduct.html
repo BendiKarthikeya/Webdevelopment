@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        #summary {
+            width: 250px;
+            height: 400px;
+            display: none;
+        }
+    </style>
+    <script>
+        function registerProcuct(){
+            document.getElementById("summary").style.display="block";
+
+            document.getElementById("lblName").textContent =document.getElementById("ProductName").value;
+            document.getElementById("lblPrice").textContent =document.getElementById("ProductPrice").value;
+            document.getElementById("lblCity").textContent =document.getElementById("city").value;
+
+            statusProduct = document.getElementById("productStatus");
+            avaliablity = '';
+
+            if (statusProduct.checked) {
+                avaliablity = 'Available in Stock';
+            } 
+            else {
+                avaliablity = 'Out of Stock';
+            }
+            document.getElementById("lblStock").textContent = avaliablity;
+
+        }
+
+        function editProduct(){
+            document.getElementById("productName").innerHTML='<h1 class="modal-title fs-5" >Edit Product</h1>';
+            
+            save=document.getElementById("btnRegister");
+            save.textContent="Save";
+            save.classList="btn btn-success";
+
+        }
+    </script>
+</head>
+<body>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#addProduct">
+    Add Product
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="productName">Add Product</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div >
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" id="ProductName">
+                </div>
+                <div>
+                    <label class="form-label">Price</label>
+                    <input type="number" class="form-control" id="ProductPrice">
+                </div>
+                <div>
+                    <label class="form-label">Shipped To</label>
+                    <select id="city" class="form-select" >
+                        <option>Select City</option>
+                        <option>Vizag</option>
+                        <option>Srikakulam</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="form-label">Stock</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="productStatus">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Available</label>
+                    </div>              
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnRegister" onclick="registerProcuct()">Register</button>
+            <button type="button" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="summary" class="m-3">
+        <h3 style="background-color: black; color: white; padding: 5px">
+          Product Details
+        </h3>
+        <dl>
+          <div class="d-flex">
+            <dt>Name :</dt>
+            <dd id="lblName" class="ms-3"></dd>
+          </div>
+  
+          <div class="d-flex">
+            <dt>Price :</dt>
+            <dd id="lblPrice" class="ms-3"></dd>
+          </div>
+  
+          <div class="d-flex">
+            <dt>City :</dt>
+            <dd id="lblCity" class="ms-3"></dd>
+          </div>
+          <div class="d-flex">
+            <dt>Stock :</dt>
+            <dd id="lblStock" class="ms-3"></dd>
+          </div>
+        </dl>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addProduct" id="editBtn" onclick="editProduct()">
+          <span class="bi bi-pen-fill"></span> EDIT
+      </button>
+      </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
