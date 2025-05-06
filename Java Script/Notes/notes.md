@@ -219,6 +219,7 @@ The MIME type for JavaScript is `text/javascript`.
 - **HTML →** HTML parser → Static DOM
 - **CSS →** CSS parser → Uses static DOM and changes the style of an element using CSSOM.
 - **JS →** JavaScript engine → Uses STATIC DOM and converts it into Dynamic DOM using 'events and functions'.
+- static then id, dyamiclly loaded means then className, name
 
 ### 4) What is strict mode for JavaScript?
 Without declaring a variable, if we don't want JavaScript to permit the usage of variables, then we need to use "strict mode".
@@ -639,7 +640,7 @@ String has various methods to process our input:
 > 💻 Add Product Code : 
   <a href="../JavaScript-bootstrap/addProduct.html">addProduct.html</a>
 
-## 🚀 How JavaScript Program is Executed (or How JavaScript Runs in the Browser)
+# 🚀 How JavaScript Program is Executed (or How JavaScript Runs in the Browser)
 
 * When JavaScript is loaded into the browser's engine, it forms an **Execution Engine** ⚙️  
   Inside the **Execution Context**, there are two main areas:
@@ -671,3 +672,163 @@ String has various methods to process our input:
 
 > 💻 **Execution Context Code Example**:  
 > <a href="../javaScript-flow/executionContext.html">executionContext.html</a>
+
+
+# Hosting
+
+### Example 1 -> <a href="../javascript-variable-declaration/sample-code.html">sample-code.html</a>
+```javascript
+    var x=3;
+    function getName(){
+        console.log("PW IOI Javascript");
+    }
+    console.log(x);
+    console.log(getName);
+    getName();
+```
+**Soution:**
+
+<img src="./Images/sample-code1.png" width="500" height="150">
+
+### Example 2 -> <a href="../javascript-variable-declaration/sample-code-2.html">sample-code-2.html</a>
+```javascript
+    console.log(x);
+    console.log(getName);
+    getName();
+
+    var x=3;
+    function getName()
+    {
+        console.log("PW IOI Javascript");
+    }
+```
+**Soution:**
+
+<img src="./Images/sample-code2.png" width="500" height="150">
+
+### Example 3 -> <a href="../javascript-variable-declaration/sample-code-3.html">sample-code-3.html</a>
+```javascript
+    console.log(x);
+        console.log(getName);
+        getName();
+        console.log(getName1);
+        getName1();
+         
+        var x=3;
+        function getName(){
+            console.log("PW IOI Javascript");
+        }
+
+        var getName1=function(){
+            console.log("PW IOI React")
+        }
+        getName1();
+```
+**Soution:**
+
+<img src="./Images/sample-code3.png" width="500" height="200">
+
+### Example 4 -> <a href="../javascript-variable-declaration/sample-code-4.html">sample-code-4.html</a>
+```javascript
+    console.log(x);
+    console.log(getName);
+    getName();
+    
+    console.log(getName2);
+    getName2();
+    console.log(getName1);
+    getName1();
+    var x=3;
+    function getName(){
+        console.log("PW IOI Javascript");
+    }
+
+    var getName1=function(){
+        console.log("PW IOI React")
+    }
+    
+    var getName2 = () =>{
+        console.log("PW IOI Node.js");
+    }
+```
+**Soution:**
+
+<img src="./Images/sample-code4.png" width="500" height="200">
+
+
+### 📌 var : It supports hoisting
+
+**hoisting** : It is a phenomenon in JavaScript where variables and functions can be used without initialization.
+
+- If a `var` variable holds a **function expression** or **arrow function**, then such variables can't be used without initialization.
+- If we try to use it, it would result in a **"Type Error"**.
+
+
+## 🧠 Local Execution Context & Memory Allocation
+
+* Memory is given in the **Local Execution Context** of each function.
+* Each function gets its own separate memory space when called.
+
+### Example 5 -> <a href="../javascript-variable-declaration/sample-code-5.html">sample-code-5.html</a>
+```javascript
+    var x=1;
+    a();
+    b();
+    function a(){
+        var x=10;
+        console.log(x);
+    }
+    function b(){
+        var x=100;
+        console.log(x);
+    }
+
+    console.log(x);
+```
+**Soution:**
+
+<img src="./Images/sample-code5.png" width="150" height="100">
+
+---
+
+## 🔍 Lexical Environment & Scope Chain
+
+**Lexical Environment** = Memory of its container + its parent container
+
+**Scope Chain** 🔗:  It refers to the **chain of lexical environments** used to identify  
+the variables | functions to access.
+
+
+<img src="./Images/lexical.png" width="700" height="400">
+
+## 🧠 var vs let vs const in JavaScript
+
+### 🔸 var:
+- It supports hoisting with `'undefined'` as the result.
+- Redeclaring the same variable is possible.
+- Reassignment of value to a variable is possible.
+- It is a **function scope** variable.
+- It supports **shadowing**.
+
+---
+
+### 🔹 let:
+- It supports hoisting  
+  ➤ [Variable would be in **Temporal Dead Zone**: it can't be used without initializing]
+- If we try to use the variable present in the Temporal Dead Zone, it would result in:  
+  ⚠️ `ReferenceError: variable can't be accessed without initialization`
+- Redeclaring the same variable is **not possible**.
+- Reassignment of value to a variable is possible.
+- They are **block scope** variables [Can't be used outside the block].
+- It supports **shadowing** [Redeclaring the same variable in a different scope].
+
+---
+
+### 🔷 const:
+- It supports hoisting  
+  ➤ [Variable would be in **Temporal Dead Zone**: it can't be used without initializing]
+- Redeclaring the same variable is **not possible**.
+- Reassignment of value to a variable is also **not possible**  
+  ⚠️ [It results in `TypeError`]
+- They are **block scope** variables [Can't be used outside the block].
+- It supports **shadowing** [Redeclaring the same variable in a different scope].
