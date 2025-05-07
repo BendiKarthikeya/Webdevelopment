@@ -676,6 +676,16 @@ String has various methods to process our input:
 
 # Hosting
 
+- Hoisting is a phenomenon in JavaScript where **variables and functions can be used before they are initialized**.
+- If a `var` variable holds a **function expression** or an **arrow function**, it **cannot** be used before initialization.
+- Trying to do so will result in a **`TypeError`**.
+
+> 🔔 **Note:**  
+> ✅ `undefined` is printable.  
+> ❌ `null` and `void` are not printable as meaningful output.
+
+<img src="./Images/scope.png">
+
 ### Example 1 -> <a href="../javascript-variable-declaration/sample-code.html">sample-code.html</a>
 ```javascript
     var x=3;
@@ -756,15 +766,7 @@ String has various methods to process our input:
 <img src="./Images/sample-code4.png" width="500" height="200">
 
 
-### 📌 var : It supports hoisting
-
-**hoisting** : It is a phenomenon in JavaScript where variables and functions can be used without initialization.
-
-- If a `var` variable holds a **function expression** or **arrow function**, then such variables can't be used without initialization.
-- If we try to use it, it would result in a **"Type Error"**.
-
-
-## 🧠 Local Execution Context & Memory Allocation
+# 🧠 Local Execution Context & Memory Allocation
 
 * Memory is given in the **Local Execution Context** of each function.
 * Each function gets its own separate memory space when called.
@@ -791,7 +793,7 @@ String has various methods to process our input:
 
 ---
 
-## 🔍 Lexical Environment & Scope Chain
+# 🔍 Lexical Environment & Scope Chain
 
 **Lexical Environment** = Memory of its container + its parent container
 
@@ -801,7 +803,7 @@ the variables | functions to access.
 
 <img src="./Images/lexical.png" width="700" height="400">
 
-## 🧠 var vs let vs const in JavaScript
+# 🧠 var vs let vs const in JavaScript
 
 ### 🔸 var:
 - It supports hoisting with `'undefined'` as the result.
@@ -832,3 +834,60 @@ the variables | functions to access.
   ⚠️ [It results in `TypeError`]
 - They are **block scope** variables [Can't be used outside the block].
 - It supports **shadowing** [Redeclaring the same variable in a different scope].
+
+## 📊 var vs let vs const – Feature Comparison
+
+| 🔧 Feature                | `var`                             | `let`                                                 | `const`                                                 |
+|--------------------------|-----------------------------------|--------------------------------------------------------|----------------------------------------------------------|
+| 🌍 Scope                 | Function Scope                    | Block Scope                                            | Block Scope                                              |
+| 📦 Hoisting              | Yes (initialized as `undefined`) | Yes (but not initialized)    | Yes (but not initialized)      |
+| 🔄 Can be Reassigned     | ✅ Yes                            | ✅ Yes                                                 | ❌ No                                                    |
+| 🔁 Can be Redeclared     | ✅ Yes                            | ❌ No                                                  | ❌ No                                                    |
+| 🕳️ Temporal Dead Zone   | ❌ No                             | ✅ Yes                                                 | ✅ Yes                                                   |
+| 🔁 Use in Loops           | ⚠️ Not safe (due to function scope) | ✅ Safe 👍| ✅ Safe (if no reassignment)|
+| 🌐 Global Object Property | ✅ Yes (if declared globally) | ❌ No| ❌ No|
+
+---
+
+## 📝 Variable Naming Rules in JavaScript
+
+1️⃣ Name must start with an **alphabet** or can start with `_` or `$`.
+
+2️⃣ `_` is used for configuring a lot of constructs.  
+It often refers to variables that require further implementation.
+
+```javascript
+var productName;     // its functionality is final 
+var _productName;    // representation :: it is not yet implemented
+```
+3️⃣❌ Don't use special characters in variable names.
+✅ Suggested by ECMA standards.
+
+4️⃣ Name can be **alphanumeric**. `var product2020;`
+
+5️⃣ Name is **case-sensitive.**
+
+6️⃣ Name can be a maximum of **255 characters** long.
+
+7️⃣ Avoid using single-character or overly long variable names.
+
+8️⃣ Avoid using JavaScript **reserved keywords** (There are 45 total).
+
+```javascript
+var const; // ❌ invalid
+var if;    // ❌ invalid
+```
+9️⃣ Always use camelCase for naming, and it should clearly describe what it is.
+
+```javascript
+var u = "sachin";         // ❌ not a good approach
+var userName = "sachin";  // ✅ good approach
+```
+
+---
+
+<img src="./Images/noDataType.png">
+
+> Note : 
+> Javascript object = {k : v} convert js object yo JSON : json.stringify()
+> JSON Object = {k : v} convert string representation to JSON to js object : JSON.parse()

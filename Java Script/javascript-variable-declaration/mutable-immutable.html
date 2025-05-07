@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let str="Hello";
+        console.log(str);
+        str[0]="Y";
+        console.log(str); //immtable
+        console.log(typeof str);
+
+        let myData=10;
+        myData.id="Roll_number";
+        console.log(myData);//immtable
+
+        let obj={i:10};
+        console.log(obj);//mutable
+
+        obj.name ="karthikeya";
+        console.log(obj);
+
+        obj.id={country: "IND",type: "cricket"};
+        console.log(obj);
+        console.log(typeof obj); //mutable
+
+        delete obj.id;
+        console.log(obj); //mutable
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
