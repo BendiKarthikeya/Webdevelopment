@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let str="Hello";
-        console.log(str);
-        str[0]="Y";
-        console.log(str); //immtable
-        console.log(typeof str);
+        let str = "Hello";
+        console.log(str);       // Hello
 
-        let myData=10;
-        myData.id="Roll_number";
-        console.log(myData);//immtable
+        str[0] = "Y";
+        console.log(str);       // Hello (strings are immutable)
 
-        let obj={i:10};
-        console.log(obj);//mutable
+        console.log(typeof str); // string
 
-        obj.name ="karthikeya";
-        console.log(obj);
+        let myData = 10;
+        myData.id = "Roll_number";
+        console.log(myData);    // 10 (primitives can't store properties)
 
-        obj.id={country: "IND",type: "cricket"};
-        console.log(obj);
-        console.log(typeof obj); //mutable
+        let obj = { i: 10 };
+        console.log(obj);       // { i: 10 }
+
+        obj.name = "karthikeya";
+        console.log(obj);       // { i: 10, name: "karthikeya" }
+
+        obj.id = { country: "IND", type: "cricket" };
+        console.log(obj);       // { i: 10, name: "karthikeya", id: { country: "IND", type: "cricket" } }
+
+        console.log(typeof obj); // object
 
         delete obj.id;
-        console.log(obj); //mutable
+        console.log(obj);       // { i: 10, name: "karthikeya" }
     </script>
 </head>
 <body>

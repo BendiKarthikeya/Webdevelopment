@@ -849,6 +849,35 @@ the variables | functions to access.
 
 ---
 
+## 🧠 Understanding `this`, `window`, and Global Variables in JavaScript
+
+### 🔍 Key Concepts:
+- Variables declared with `var` in the global scope are added to the `window` object (in browsers).
+- Inside a regular function, `this` refers to the `window` object (when not in strict mode).
+- Modifying `window.b` changes the global `b`.
+
+---
+
+### 🧪 Example:
+> 💻 **Code**: <a href="../javascript-variable-declaration/scope-environment.html">scope-environment.html</a>
+```javascript
+var b = 3;
+
+function a() {
+    console.log(b);         // 🔸 3 – accesses global variable b
+    console.log(this.b);    // 🔸 3 – 'this' refers to window in global context
+    console.log(window.b);  // 🔸 3 – direct access via window object
+
+    window.b = 100;         // 🔄 updates global b
+}
+
+a();
+
+console.log(b); // 🔸 100 – value of b is updated by window.b
+```
+
+
+
 ## 📝 Variable Naming Rules in JavaScript
 
 1️⃣ Name must start with an **alphabet** or can start with `_` or `$`.
@@ -872,22 +901,61 @@ var _productName;    // representation :: it is not yet implemented
 7️⃣ Avoid using single-character or overly long variable names.
 
 8️⃣ Avoid using JavaScript **reserved keywords** (There are 45 total).
-
-```javascript
-var const; // ❌ invalid
-var if;    // ❌ invalid
-```
+  ```javascript
+    var const; // ❌ invalid
+    var if;    // ❌ invalid
+  ```
+  
 9️⃣ Always use camelCase for naming, and it should clearly describe what it is.
+  ```javascript
+    var u = "sachin";         // ❌ not a good approach
+    var userName = "sachin";  // ✅ good approach
+  ```
 
-```javascript
-var u = "sachin";         // ❌ not a good approach
-var userName = "sachin";  // ✅ good approach
-```
-
----
+## 🔢📄 JavaScript DataTypes Overview
 
 <img src="./Images/noDataType.png">
 
-> Note : 
-> Javascript object = {k : v} convert js object yo JSON : json.stringify()
-> JSON Object = {k : v} convert string representation to JSON to js object : JSON.parse()
+## 🔄 Mutable vs Immutable in JavaScript
+
+### 📌 Key Concepts:
+- **Primitive types** like `string` and `number` are **immutable** (can't be changed after creation).
+- **Objects** are **mutable** – you can add, modify, or delete their properties.
+- Even though primitives can hold properties, those are not retained as primitives don't have memory for object-like behavior.
+
+---
+
+### 🧪 Example Code:
+> 💻 **Code**: <a href="../javascript-variable-declaration/mutable-immutable.html">mutable-immutable.html</a>
+```javascript
+  let str = "Hello";
+  ``console.log(str);       // Hello
+
+  str[0] = "Y";
+  console.log(str);       // Hello (strings are immutable)
+
+  console.log(typeof str); // string
+
+  let myData = 10;
+  myData.id = "Roll_number";
+  console.log(myData);    // ❌ 10 (primitives can't store properties)
+
+  let obj = { i: 10 };
+  console.log(obj);       // { i: 10 }
+
+  obj.name = "karthikeya";
+  console.log(obj);       // { i: 10, name: "karthikeya" }
+
+  obj.id = { country: "IND", type: "cricket" };
+  console.log(obj);       // { i: 10, name: "karthikeya", id: { country: "IND", type: "cricket" } }
+
+  console.log(typeof obj); // object
+
+  delete obj.id;
+  console.log(obj);       // { i: 10, name: "karthikeya" }
+```
+
+> **Note :**<br>
+> Javascript object = {k : v} convert js object to JSON : json.stringify() <br>
+> JSON Object = {k : v} convert string representation to JSON to js object : JSON.parse()<br>
+>  💻 **JS to JSON Code**:   <a href="../javascript-variable-declaration/json.html">json.html</a>
