@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        let userType = prompt("Enter the userType",'ADMIN');
+        let labelName = prompt("Enter the label name ",'EMAIL|PASsWORD');
+        let type= prompt("Enter the type of input",'EMAIL|PASsWORD');
+        let buttonText=prompt("Enter the button text");
+        let template = 
+                `
+                    <h2>${userType}</h2>
+                    <dl>
+                        <dt>${labelName}</dt>
+                        <dd> 
+                            <input type=${type}> 
+                        </dd>
+                    </dl>
+                    <button>${buttonText}</button>
+                `
+        document.write(template);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

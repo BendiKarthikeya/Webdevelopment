@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript">
-        console.log(x);
-        console.log(getName);
-        getName();
-         
-        var x=3;
-        function getName(){
-            
-            console.log("PW IOI Javascript");
-        }
-    </script>
 </head>
 <body>
-    <h1>Sample code 2</h1>
+    <script type="text/javascript">
+        let cost = 45000;
+        let options = {
+            'style' : 'currency',
+            'currency' : 'JPY'
+        }
+        console.log("Amount is : " + cost.toLocaleString('ja-JP', options));
+        
+    </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+.time{
+            color: #f0ebd8;
+            padding: 20px;
+            margin: 20px;
+            font-size: 50px;
+            box-shadow: 5px 5px 7px purple;
+            border-radius: 30px;
+            width: 150px;
+
+            text-align: center;
+        }
+        main{
+            display: block;
+            align-items: center;
+            justify-content: center;
+        }
+          
+        
+        .clock{
+            padding: 10px;
+            height: 300px;
+            width: 500px;
+            
+        }
+        .clock span{
+            color: #f0ebd8;
+            font-size: 50px;
+            margin-bottom: 20px;
+            margin-left: -5px;
+            margin-right: -10px;
+        }
+        #today{
+            font-size: 40px;
+            box-shadow: 5px 5px 7px purple;
+            padding: 15px;
+            border-radius: 30px;    
+
+        }
+        header{
+            display: flex;
+            justify-content: end;
+        }
+        .bi-moon{
+            color: white;
+            
+        }   
+        .icon{
+            margin: 20px;
+            border: 1px solid white;
+            border-radius: 50%;
+            padding: 5px 7px 5px 7px;
+        }

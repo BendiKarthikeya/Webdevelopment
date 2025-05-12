@@ -956,6 +956,193 @@ var _productName;    // representation :: it is not yet implemented
 ```
 
 > **Note :**<br>
-> Javascript object = {k : v} convert js object to JSON : json.stringify() <br>
-> JSON Object = {k : v} convert string representation to JSON to js object : JSON.parse()<br>
+> **Javascript object** = {k : v} convert js object to JSON : **JSON.stringify()** <br>
+> **JSON Object** = {k : v} convert string representation to JSON to js object : **JSON.parse()**<br>
 >  💻 **JS to JSON Code**:   <a href="../javascript-variable-declaration/json.html">json.html</a>
+
+# 🔢 Number Type in JavaScript
+
+JavaScript stores all numbers (whether typed by the user or written in code) using the **IEEE 754 double-precision floating point format** (64-bit float).
+
+### 🧮 Bit Representation:
+
+| 🧱 Bits  | 🔍 Purpose                            |
+|--------|--------------------------------------|
+| 1 bit  | Sign (0 = positive, 1 = negative)     |
+| 11 bits| Exponent (with bias of 1023)          |
+| 52 bits| Mantissa / Fractional digits          |
+
+---
+
+### 📊 JavaScript Number Concepts:
+
+| 🧠 Concept              | 📌 JavaScript (`number`)      |
+|------------------------|-----------------------------|
+| 🔢 Max Safe Integer     | `2^53 - 1 `                   |
+| ⚠️ Precision Above Limit| ❌Lost                        |
+| 💡 Alternative          | `BigInt`                    |
+
+
+### 📝 Note on JavaScript Number Precision
+
+Since `number` is a **floating-point type**, it can lead to **precision issues**.
+
+#### ⚠️ Example:
+```javascript
+console.log(0.1 + 0.2); // 0.30000000000000004
+```
+
+#### ✅ Solution:
+```javascript
+console.log((0.1 + 0.2).toFixed(2)); // "0.30"
+```
+
+---
+
+### 🔢 BigInt
+
+To store any **large integer** number with precision, we use **BigInt**.  
+If the number exceeds **53-bit precision**, JavaScript introduces `BigInt`.
+
+```javascript
+let c = 9007199254740993n;
+
+console.log(c);             // 9007199254740993
+console.log(c == c + 1n);   // false [No loss of precision]
+```
+
+---
+
+#### 📌 Example #1
+
+```javascript
+let a = 9007199254740991;
+let b = 9007199254740992;
+let c = 9007199254740993n;
+let d = 9007199254740994; 
+
+console.log(a);             // 9007199254740991
+console.log(b);             // 9007199254740992
+console.log(c);             // 9007199254740993
+console.log(d);             // 9007199254740992-it will be 
+console.log(c + 1n);        // 9007199254740994n
+
+console.log(a === a + 1);   // true
+console.log(c === c + 1n);  // false
+```
+
+## 🔄 Converting String to Number in JavaScript
+
+To convert data from **String** format to **Number** type, we have 3 mechanisms:
+
+1️⃣ `parseInt()` | `parseFloat()`  
+2️⃣ `Number()`
+
+---
+
+### 🔢 `Number(input)`
+- ✅ Expects the input to be strictly in **numeric form**.
+- ❌ If **any special characters** are part of the data, it returns `NaN`.
+
+
+---
+
+#### 🔍 `parseInt(input)`
+- ✅ Expects the input in **string** format.
+- ✅ Returns the number until it encounters a **non-numeric character**.
+- ❌ If the **first character** is a non-numeric/special symbol, it returns `NaN`.
+
+
+## 🤔 `isNaN(input)` vs `Number.isNaN(input)`
+
+### 🧪 `isNaN(input)`
+
+* Converts the input to **Number** using `Number()` internally.
+* If the result is `NaN`, it returns `true`; otherwise, `false`.
+
+📎 **Reference Code**: [isNaN.html](../Inbuit%20methods/isNaN.html)
+
+---
+
+### 🔍 `Number.isNaN(input)` *(ES+6V)*
+
+* **Does not convert** the input.
+* It checks **strictly** whether the input is `NaN`.
+* Returns `true` if the input is exactly `NaN`; otherwise, `false`.
+
+```javascript
+Number.isNaN(NaN);      // true ✅
+Number.isNaN("NaN");    // false ❌ (string, not actual NaN)
+Number.isNaN(undefined); // false ❌
+```
+
+📎 **Reference Code**: [Number_isNaN.html](../Inbuit%20methods/numberIsNaN.html)
+
+> **📝 Note:** While performing `+` operation, if one of the operands is `NaN`, then the output will be `'NaN'`.
+
+
+<img src="./Images/toLocaleString.png" height="400" width="800">
+
+## 🔁 String Conversion Methods
+
+### 🔤 `toString()`
+
+* Converts a number to a **string** representation.
+
+---
+
+### 🌐 `toLocaleString(locale, options)`
+
+* Converts a number into a **localized string** using given **locale** and **formatting options**.
+
+```javascript
+options = {
+  style: "currency",
+  currency: "INR" // or "USD", "EUR", etc.
+};
+```
+
+✅ Example:
+```javascript
+let amount = 2500;
+console.log(amount.toLocaleString("en-IN", {
+  style: "currency",
+  currency: "INR"
+}));
+// Output: ₹2,500.00
+```
+### 📊 Country, Locale Code & Currency Code
+
+| Country           | Locale Code | Currency Code | Example Amount (45,000) |
+|------------------|-------------|----------------|--------------------------|
+| United States     | `en-US`     | USD            | 45,000.00                |
+| Germany           | `de-DE`     | EUR            | 45.000,00                |
+| Japan             | `ja-JP`     | JPY            | ￥45,000                 |
+| India             | `en-IN`     | INR            | ₹45,000.00               |
+| United Kingdom    | `en-GB`     | GBP            | £45,000.00               |
+| Canada            | `en-CA`     | CAD            | CA$45,000.00             |
+| Algeria (example) | `ar-DZ`     | DZD            | 45 000,00 DA             |
+
+> 💻 Related Code : 
+  [localeString.html](../Inbuit%20methods/localeString.html)
+
+> 🚀 **Mini Project**: [emi-calculator.html](../Inbuit%20methods/emi-calculate.html)
+
+## 🧵 String in JavaScript
+
+In JavaScript, strings can be created in **three ways**:
+
+1️⃣ Double Quotes → `"Hello World"` → used internally by js engine <br>
+2️⃣ Single Quotes → `'Hello World'`  <br>
+3️⃣ Backticks (Template Literals) → `` `Hello World` `` → used by developers for Template Binding
+
+📝 **Note**:  
+Backticks allow **multiline strings** and **expression interpolation** using `${}`.
+
+💻 **Reference Code**: [core-string.html](../Javascript-Strings/core-string.html)
+
+* string uses auto boxing
+
+* length properties 
+
+* Working with backticks

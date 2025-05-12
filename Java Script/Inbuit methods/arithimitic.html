@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let numOne = prompt("Enter the first number");
+        let numTwo = prompt("Enter the second number");
+        let age=prompt("Enter the age");
+        let ageInput=Number(age);
+        if(age == null){
+            console.log("No age entered, u pressed cancel button | esc button");
+        }
+        else if(age == ''){
+            console.log("Plz enter the right age to process")
+        }
+        else if(Number.isNaN(ageInput)){
+            console.log("Plz enter the correct age");
+        }
+        else{
+            console.log("Age is ",age);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMI Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .slider-label {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    .result-box {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="text-center p-4 mb-4 bg-dark text-white">
+    <h1>Personal Loan EMI Calculator</h1>
+  </div>
+
+  <div class="container">
+    <div class="row g-4">
+      <!-- Amount -->
+      <div class="col-md-4">
+        <div class="card p-3">
+          <label class="form-label">Loan Amount (₹)</label>
+          <input type="number" class="form-control mb-2" id="money" value="525000" oninput="syncInput('amount', 'money')">
+          <input type="range" class="form-range" id="amount" min="50000" max="1000000" step="1000" value="525000" oninput="syncSlider('amount', 'money')">
+          <div class="d-flex justify-content-between slider-label">
+            <span>₹50,000</span>
+            <span>₹10,00,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tenure -->
+      <div class="col-md-4">
+        <div class="card p-3">
+          <label class="form-label">Loan Tenure (Years)</label>
+          <input type="number" class="form-control mb-2" id="years" value="3" min="1" max="5" oninput="syncInput('age', 'years')">
+          <input type="range" class="form-range" id="age" min="1" max="5" step="1" value="3" oninput="syncSlider('age', 'years')">
+          <div class="d-flex justify-content-between slider-label">
+            <span>1</span>
+            <span>5</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interest Rate -->
+      <div class="col-md-4">
+        <div class="card p-3">
+          <label class="form-label">Interest Rate (%)</label>
+          <input type="number" class="form-control mb-2" id="interest" value="14.45" step="0.05" min="10.25" max="18.45" oninput="syncInput('rate', 'interest')">
+          <input type="range" class="form-range" id="rate" min="10.25" max="18.45" step="0.05" value="14.45" oninput="syncSlider('rate', 'interest')">
+          <div class="d-flex justify-content-between slider-label">
+            <span>10.25%</span>
+            <span>18.45%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculate Button -->
+    <div class="d-flex justify-content-end mt-4">
+      <button onclick="calculateEMI()" class="btn btn-primary px-4">Calculate</button>
+    </div>
+
+    <!-- Results -->
+    <div class="mt-4 text-center">
+      <div class="alert alert-info result-box" role="alert">
+        EMI: <strong id="emiAmount">--</strong> per month for <strong id="months">--</strong> months
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function syncSlider(sliderId, inputId) {
+      document.getElementById(inputId).value = document.getElementById(sliderId).value;
+      calculateEMI();
+    }
+
+    function syncInput(sliderId, inputId) {
+      const input = document.getElementById(inputId);
+      const slider = document.getElementById(sliderId);
+
+      let value = parseFloat(input.value);
+      if (value < parseFloat(slider.min)) value = slider.min;
+      if (value > parseFloat(slider.max)) value = slider.max;
+
+      slider.value = value;
+      calculateEMI();
+    }
+
+    function calculateEMI() {
+      const principal = parseFloat(document.getElementById("money").value);
+      const annualRate = parseFloat(document.getElementById("interest").value);
+      const tenureYears = parseFloat(document.getElementById("years").value);
+
+      const rate = annualRate / 12 / 100;
+      const tenureMonths = tenureYears * 12;
+
+      const emi = (principal * rate * Math.pow(1 + rate, tenureMonths)) /
+                  (Math.pow(1 + rate, tenureMonths) - 1);
+
+      document.getElementById("emiAmount").textContent = "₹" + Math.round(emi);
+      document.getElementById("months").textContent = tenureMonths;
+    }
+
+    // Calculate EMI initially on load
+    window.onload = calculateEMI;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

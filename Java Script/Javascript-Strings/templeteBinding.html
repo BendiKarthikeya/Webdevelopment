@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        let userName = prompt("Enter the Username");
+        let userAge = prompt("Enter the age");
+
+        function doTask(uName,uAge){
+            console.log(`Hello ${userName}, your age is ${userAge}, Status: ${userAge>18? 'Major': 'Minor'}`)
+        }
+
+        function doOneMoreTask(user){
+            return `Hello ${user}`;
+        }
+        function doCall(){
+            console.log('Call made!');
+        }
+
+        function printByHighlighting(strings,value){
+            console.log("Call is made...");
+            return `${strings[0]} <b>${value}</b> ${strings[1]}`;
+        }
+        doTask(userName,userAge);
+        document.write(`Greeting MSG : ${doOneMoreTask('Dhoni')} <br>`);
+        doCall = ``; // Can call function without bracket '()' by using Backticks
+        let name='Javascript';
+        document.write(printByHighlighting `Learn <b>${name}</b> from PW IOI`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
