@@ -1,5 +1,4 @@
 .time{
-            color: #f0ebd8;
             padding: 20px;
             margin: 20px;
             font-size: 50px;
@@ -23,7 +22,6 @@
             
         }
         .clock span{
-            color: #f0ebd8;
             font-size: 50px;
             margin-bottom: 20px;
             margin-left: -5px;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function verifyEmail(){
+            const email=document.getElementById("txtUserEmail");
+            const msg= document.getElementById("errMsg");
+            let flag= email.value.indexOf("@");
+            if(flag == -1){
+                msg.innerHTML='Invalid Email'.fontcolor("red");
+            }
+            else{
+                flag=email.value.endsWith("@gmail.com")
+                if(flag){
+                    msg.innerHTML='';
+                }   
+                else{
+                    msg.innerHTML='Only Gmail is allowed'.fontcolor("red");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Enter your Email</dt>
+        <dd>
+            <input type="text" id="txtUserEmail" onblur="verifyEmail()">
+            
+        </dd>
+        <dd id="errMsg">
+
+        </dd>
+    </dl>
+</body>
+</html>

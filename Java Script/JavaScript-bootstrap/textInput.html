@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <script>
+        window.onload = function () {
+            changeText();
+            changeCenter();
+        };
+
+        function changeText() {
+            const size = document.getElementById("size").value;
+            const color = document.getElementById("color").value;
+            const style = document.getElementById("style").value;
+
+            const sampleText = document.getElementById("sampleText");
+            sampleText.style.fontSize = `${size}rem`;
+            sampleText.style.color = color;
+            sampleText.style.fontFamily = style;
+        }
+
+        function changeLeft() {
+        const sampleText = document.getElementById("sampleText");
+        sampleText.style.textAlign = "left";
+        }
+
+        function changeCenter() {
+        const sampleText = document.getElementById("sampleText");
+        sampleText.style.textAlign = "center";
+        }
+
+        function changeRight() {
+        const sampleText = document.getElementById("sampleText");
+        sampleText.style.textAlign = "right";
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div class="d-flex justify-content-around m-5">
+        <div>
+            <label>Font Size</label>
+            <div>
+                <span>1</span>
+                <input type="range" min="1" max="7"  step="1" oninput="changeText()" id="size">
+                <span>7</span>
+            </div>    
+        </div>
+        <div>
+            <label>Color</label>
+            <div>
+                <input type="color" id="color" name="color" value="#ff0000" oninput="changeText()" id="color">
+            </div>
+        </div>
+        <div>
+            <label>Style</label>
+            <div class="dropdown">
+                <select id="style" class="form-select" onchange="changeText()" id="style">
+                    <option value="sans-serif">Sans-serif</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                </select>
+              </div>
+        </div>
+        <div>
+            <button class="btn btn-secondary" id="lBtn" onclick="changeLeft()">L</button>
+            <button class="btn btn-secondary" id="cBtn" onclick="changeCenter()">C</button>
+            <button class="btn btn-secondary" id="rBtn" onclick="changeRight()">R</button>
+        </div>
+    </div>
+    <div class="m-5" id="sampleText">
+        Sample Text
+    </div>
+     <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

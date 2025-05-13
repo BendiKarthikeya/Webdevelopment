@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function validateOTP(){
+            let otp=document.getElementById("txtOTP");
+            
+        }
+        function changeUpperCase(){
+            const UserName=document.getElementById("txtName");
+            console.log(UserName.value.toUpperCase());
+            UserName.value=UserName.value.toUpperCase()
+        }
+    </script>
 </head>
 <body>
     <dl>
+        <dt>Enter UserName</dt>
+        <dd>
+            <input type="text" id="txtName" placeholder="ENTER IN UPPERCASE" onblur="changeUpperCase()">
+        </dd>
         <dt>Enter OTP</dt>
         <dd>
-            <input  >
+            <input  type="text" id="txtOTP" size="5" onblur="validateOTP()">
+        </dd>
+        <dd id="msg">
+
         </dd>
     </dl>
 </body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function verifyCase(){
+            const username=document.getElementById("txtUsername");
+            const msg=document.getElementById("error-msg");
+            const first = username.value.charCodeAt(0);
+            if(first>=65 && first<=90){
+                msg.innerHTML='';
+            }
+            else{
+               msg.innerHTML='Name should starts with capital letter'.fontcolor("red");
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Username</dt>
+        <dd>
+            <input type="text" id="txtUsername" onblur="verifyCase()">
+        </dd>
+        <dd id="error-msg">
+
+        </dd>
+    </dl>
+</body>
+</html>

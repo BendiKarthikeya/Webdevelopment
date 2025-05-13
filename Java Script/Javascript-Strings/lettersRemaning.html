@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script type="text/javascript">
+
+        function verifyChars() {
+            const comments = document.getElementById("userComments");
+            const msg = document.getElementById("msg");
+            let noOfChars = 20;
+            let typedCharacter = comments.value.length;
+            msg.innerHTML = `${noOfChars- typedCharacter} Remaining `.bold().fontcolor('red');
+        }
+     </script>
+</head>
+<body>
+    <fieldset style="width:250px">
+        <legend>Your comments</legend>
+        <samp>Note : max 20 characters</samp>
+        <br><br>
+        <textarea name="" id="userComments" rows="4" cols="20" onkeyup="verifyChars()" maxlength="20" autofocus></textarea>
+        <p id="msg">
+        </p>
+    </fieldset>
+</body>
+</html>
+ 

@@ -56,4 +56,19 @@ function updateDate(){
     }
     document.getElementById("year").textContent=year;
 }
+
+function changeTheme() {
+  const checkBox = document.getElementById("ThemeCheckBox");
+  const body = document.body;
+
+  if (checkBox.checked) {
+    body.classList.remove("bg-black", "text-white");
+    body.classList.add("bg-light", "text-dark");
+  } else {
+    body.classList.remove("bg-light", "text-dark");
+    body.classList.add("bg-black", "text-white");
+  }
+}
+
+
 setInterval(updateTime,1000);

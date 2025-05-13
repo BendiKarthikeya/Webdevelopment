@@ -304,8 +304,6 @@ Syntax:
 
 
 
-
-
 ## Accessing the Elements in JS
 
 ### <u>By ID Name</u>
@@ -356,7 +354,6 @@ array.forEach(callbackFunction);
 ### 3️⃣<u>By QuerySelector</u>
 
  
-
 **document.querySelector(cssSelector) : Element**
 
 **document.querySelectorAll(cssSelector) : NodeList**
@@ -1146,3 +1143,320 @@ Backticks allow **multiline strings** and **expression interpolation** using `${
 * length properties 
 
 * Working with backticks
+
+### 🔗 Binding in JavaScript
+
+**Binding** is the process of attaching a variable with its value at runtime.
+
+---
+
+#### 🔄 Data Binding
+
+Binding a variable with its value.
+
+📌 Example:
+```javascript
+var userName = 'sachin';
+document.write(`${userName}`);      // Output: sachin
+document.write(`${username}`);      // ❌ ReferenceError (case-sensitive)
+```
+
+---
+
+#### 🎨 Style Binding
+
+Attaching style-related details *inline* to an element is called **style binding**.
+
+📌 Examples:
+```javascript
+document.getElementById("myDiv").style.color = 'red';
+document.getElementById("myDiv").style.cssText = 'background: yellow; font-size: 20px;';
+```
+
+---
+
+#### 🧷 Class Binding
+
+Attaching a **class** (user-defined or from a library) to an element is called **class binding**.
+
+📌 Example:
+```javascript
+document.getElementById("myDiv").className = 'myCustomClass';
+```
+
+## ⚡ What is an Event?
+
+An **event** is anything that **happens on a webpage**. JavaScript uses these events to trigger actions in response to user interactions.
+
+### 🔍 Common Events
+
+- **🖱️ `onclick`** → Triggered when an element is clicked (e.g., a button).
+- **🔄 `onchange`** → Triggered when the value of an input element changes.
+- **👀 `onblur`** → Triggered when an element loses focus.
+- **🌐 `onload`** → Triggered when the webpage finishes loading in the browser.
+
+
+## ✍️ String Formatting Methods
+
+JavaScript provides several built-in methods to style or transform strings. These methods return a **new string** and do not modify the original one.
+
+---
+
+| 🛠️ Method            | 🔁 Return Type | 📄 Description                        |
+|----------------------|----------------|--------------------------------------|
+| `bold()`             | string         | Wraps the string in `<b>` tags.      |
+| `italics()`          | string         | Wraps the string in `<i>` tags.      |
+| `fontsize(number)`   | string         | Sets font size using `<font size>`.  |
+| `fontcolor(string)`  | string         | Sets font color using `<font color>`.|
+| `toUpperCase()`      | string         | Converts text to uppercase.          |
+
+---
+
+### 💡 Example
+
+```javascript
+let name = "sachin";
+
+document.write(name.bold());          // <b>sachin</b>
+document.write(name.italics());       // <i>sachin</i>
+document.write(name.fontsize(5));     // <font size="5">sachin</font>
+document.write(name.fontcolor("red")); // <font color="red">sachin</font>
+document.write(name.toUpperCase());   // SACHIN
+```
+
+### 🔗 Method Chaining in JavaScript
+
+**Method Chaining** is the technique of calling multiple methods on the same object in a single line of code.
+
+📌 Example 1:
+```javascript
+let str = 'string';
+let str1 = str.toUpperCase();           // 'STRING'
+let str2 = str1.bold();                 // '<b>STRING</b>'
+let str3 = str2.fontcolor('red');       // '<font color="red"><b>STRING</b></font>'
+document.write(str3);
+```
+
+📌 Example 2 (Chained version):
+```javascript
+document.write(str.toUpperCase().bold().fontcolor('red'));
+```
+
+🚀 This makes the code concise and readable when working with string transformations or DOM manipulations.
+
+
+### ⚠️ JavaScript Error Types
+
+| 🔍 **ReferenceError**                                  | 📐 **SyntaxError**                            | ⚙️ **TypeError**                                  |
+|--------------------------------------------------------|------------------------------------------------|---------------------------------------------------|
+| a. Not defined<br>b. Undefined<br>c. Cannot access before initialization | Variable is already declared                   | Assignment to a constant variable                 |
+| `let` , `const: Temporal Dead Zone`                      | `(let , const)` — redeclaration or invalid syntax | Performing invalid operations on a value, e.g., `null.f()` |
+
+
+Example 1
+> 💻 Related Code : 
+  [dark-light.html](../JavaScript-bootstrap/dark-light.html)
+
+Example 2
+> 💻 Related Code : 
+  [textInput.html](../JavaScript-bootstrap/textInput.html)
+
+## 🧰 Methods of String Object
+
+### 📏 `length` Property
+- It counts the number of characters present in the string.
+- **Return Type:** `number`
+
+```javascript
+let str = "sachin";
+console.log(str.length);   // 6 ✅
+console.log(str.length()); // ❌ TypeError (length is a property, not a method)
+```
+
+> 💻 **Related Code:**   [lettersRemaning.html](../Javascript-Strings/lettersRemaning.html)
+
+---
+
+### 🔍 `startsWith()` & `endsWith()` Methods
+
+**Return Type:**
+- **`startsWith(string)`**: `boolean`  
+- **`endsWith(string)`**: `boolean`  
+
+#### 📘 Examples
+
+```javascript
+let str = 'sachin@gmail.com';
+console.log(str.endsWith("@gmail.com")); // true ✅
+
+console.log(str.endsWith("@yahoo.com")); // false ❌
+
+let title = 'IPL2025';
+console.log(title.startsWith("IPL"));    // true ✅
+console.log(title.startsWith("ipl"));    // false ❌ (case-sensitive)
+```
+
+📌 *Note: `startsWith()` and `endsWith()` are case-sensitive methods.*
+
+> 💻 **Related Code:**   [cardATM.html](../Javascript-Strings/cardATM.html)
+
+---
+
+### 🧠 `charAt()` & `charCodeAt()` Methods
+
+These methods are used to work with individual characters in a string.
+
+
+| 🛠 Method              | 🔁 Return Type   | 📄 Description                                                  |
+|------------------------|------------------|------------------------------------------------------------------|
+| `charAt(number)`       | `string` (1 char) | Returns the character at the specified index.                    |
+| `charCodeAt(number)`   | `number`          | Returns the ASCII/Unicode of the character at the specified index. |
+
+
+#### 📌 Note:
+- ASCII of `a-z` ➡️ `97 to 122`  
+- ASCII of `A-Z` ➡️ `65 to 90`  
+- If the value passed to `charCodeAt()` is `null`, `undefined`, or `NaN`, it defaults to index `0`.
+
+---
+
+#### 💡 Examples
+
+```javascript
+let str = 'sachin';
+
+console.log(str.charAt(0));       
+// Output: 's'
+
+console.log(str.charCodeAt(0));   
+// Output: 115
+
+console.log(str.charCodeAt());    
+// Output: 115 (defaults to index 0 if no argument is passed)
+```
+
+> 💻 **Related Code:**   [charCodeAt-index.html](../Javascript-Strings/charCodeAt-index.html)
+
+---
+
+### 🔍 `indexOf()` Method
+
+The `indexOf()` method in JavaScript is used to find the **first occurrence** of a specified substring within a string.
+
+
+| 🛠 Method       | 🔁 Return Type | 📄 Description                                                                 |
+|----------------|----------------|---------------------------------------------------------------------------------|
+| `indexOf(str)` | `number`       | Returns the index of the first occurrence of `str`, or `-1` if not found.       |
+
+
+#### 💡 Example
+
+```javascript
+let str = 'hello world';
+
+console.log(str.indexOf('world')); 
+// Output: 6
+
+console.log(str.indexOf('xyz'));   
+// Output: -1 (not found)
+```
+
+> ℹ️ `indexOf()` is **case-sensitive**, so `str.indexOf('World')` would also return `-1`.
+
+> 💻 **Related Code:**   [index-of-index.html](../Javascript-Strings/index-of-index.html)
+
+---
+
+### ✂️ `slice()` Method
+
+The `slice()` method is used to extract characters between specified indices.
+
+#### 🔧 Syntax
+```javascript
+slice(startIndex, endIndex) : string
+```
+- Returns characters from `startIndex` up to but **not including** `endIndex`.
+- If only `startIndex` is provided, it extracts till the end.
+- Extraction is **forward only** (`endIndex` must be greater than `startIndex`).
+
+---
+
+#### 🧾 Parameters
+
+| Parameter     | Description                                                                 |
+|---------------|-----------------------------------------------------------------------------|
+| `startIndex`  | Required – starting position. Negative values count from the end of string. |
+| `endIndex`    | Optional – ending position (exclusive). Negative values also count from end.|
+
+---
+
+#### 🔎 Special Cases
+
+| Value       | Behavior           |
+|-------------|--------------------|
+| `NaN`       | Treated as `0`     |
+| `null`      | Treated as `0`     |
+| `undefined` | Interpreted as "till end" |
+| `true`      | Treated as `1`     |
+| `false`     | Treated as `0`     |
+
+---
+
+#### 💡 Examples
+
+```javascript
+let str = 'sachinrameshtendulkar';
+
+console.log(str.slice(6, -5));             // rameshtend
+console.log(str.slice(6, 16));             // rameshtend
+console.log(str.slice());                  // sachinrameshtendulkar
+console.log(str.slice(-6, -9));            // ""
+console.log(str.slice(-9, -6));            // ten
+console.log(str.slice(NaN, NaN));          // ""
+console.log(str.slice(undefined, undefined)); // sachinrameshtendulkar
+console.log(str.slice(null, null));        // ""
+console.log(str.slice(null, undefined));   // sachinrameshtendulkar
+console.log(str.slice(true, true));        // ""
+console.log(str.slice(true, false));       // ""
+console.log(str.slice(false, true));       // s
+console.log(str.slice(false, null));       // ""
+console.log(str.slice(false, undefined));  // sachinrameshtendulkar
+```
+
+---
+
+### 🔁 `substring()` Method
+
+The `substring()` method extracts characters from a string between two specified indices.
+
+#### 🔧 Syntax
+```javascript
+substring(startIndex, endIndex) : string
+```
+
+- If `endIndex` is omitted → extracts to the end.
+- If `startIndex > endIndex` → they are **swapped**.
+- **Negative values are treated as 0**.
+
+---
+
+#### 🧾 Parameters
+
+| Parameter     | Description                                                             |
+|---------------|-------------------------------------------------------------------------|
+| `startIndex`  | Required – Starting position (inclusive).                               |
+| `endIndex`    | Optional – Ending position (exclusive). If omitted, reads to the end.   |
+
+---
+
+#### 💡 Examples
+
+```javascript
+let str = 'sachinrameshtendulkar';
+
+console.log(str.substring(7));       // 'ameshtendulkar'
+console.log(str.substring(7, 15));   // 'ameshten'
+console.log(str.substring(7, 0));    // 'sachinr' (start > end → swapped)
+```
+
+---
