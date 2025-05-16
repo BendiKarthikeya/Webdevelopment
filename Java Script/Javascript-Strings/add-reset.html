@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="disableButton()">
+    <input type="text" id="userName" placeholder="Enter your name" oninput="toggleButton()">
+    <button onclick="addNames()" id="addItems">Add Items</button><button id="resetItems" onclick="resetNames()">Rest Items</button>
+    <button onclick="removeLastElement()" id="lastElement">Last Element</button>
+    <ul id="listItem">
+
+    </ul>
+    <script>   
+        function addNames(){
+            const userName=document.getElementById("userName");
+            let li=document.createElement("li");
+            li.textContent=userName.value.trim().toUpperCase();
+            let ul=document.getElementById("listItem");
+            ul.appendChild(li);
+            userName.value='';
+            userName.focus();
+            document.getElementById("addItems").disabled=true;
+            document.getElementById("resetItems").disabled=false;
+            document.getElementById("lastElement").disabled=false;
+        }
+        function resetNames(){
+            let ul=document.getElementById("listItem");
+            ul.innerHTML = '';
+            document.getElementById("resetItems").disabled=true;
+            document.getElementById("lastElement").disabled=true;
+        }
+        function disableButton(){
+            document.getElementById("addItems").disabled=true;
+            document.getElementById("resetItems").disabled=true;
+            document.getElementById("lastElement").disabled=true;
+        }
+        function toggleButton(){
+            if(document.getElementById("userName").value.length>0){
+                 document.getElementById("addItems").disabled=false;
+            }
+            else{
+                 document.getElementById("addItems").disabled=true;
+            }
+           
+            
+        }
+        function removeLastElement(){
+            let ul=document.getElementById("listItem");
+            ul.removeChild(ul.lastElementChild);
+            if(ul.children.length===0){   
+                document.getElementById("lastElement").disabled=true;
+                document.getElementById("resetItems").disabled=true;
+            }
+            else{  
+                document.getElementById("lastElement").disabled=false;
+            }
+        }
+    </script>
+</body>
+</html>

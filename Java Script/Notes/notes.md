@@ -258,8 +258,7 @@ Syntax:
 > #### If we target the element using DOM hieracrchy it might result in code breaks when DOM structure is changed.
 **Solution:** use ID and target the element 
 
-> 💻 Related Code : 
-<a href="../JavaScript examples/dom-hierarchy-code.html">Click on this</a>
+> 💻 Related Code :  <a href="../JavaScript examples/dom-hierarchy-code.html">Click on this</a>
 
 ### ⚠️ Disadvantage of Using DOM Hierarchy for Targeting Elements
 
@@ -1309,8 +1308,8 @@ These methods are used to work with individual characters in a string.
 
 | 🛠 Method              | 🔁 Return Type   | 📄 Description                                                  |
 |------------------------|------------------|------------------------------------------------------------------|
-| `charAt(number)`       | `string` (1 char) | Returns the character at the specified index.                    |
-| `charCodeAt(number)`   | `number`          | Returns the ASCII/Unicode of the character at the specified index. |
+| `charAt(number)`       | `object` (1 char) | Returns the character at the specified index.                    |
+| `charCodeAt(number)`   | `object`          | Returns the ASCII/Unicode of the character at the specified index. |
 
 
 #### 📌 Note:
@@ -1460,3 +1459,115 @@ console.log(str.substring(7, 0));    // 'sachinr' (start > end → swapped)
 ```
 
 ---
+
+### 🔍 Difference Between `slice()` and `substring()`
+
+| 🧩 **Feature**                             | ✂️ **slice()**                                | 🔁 **substring()**                           |
+|--------------------------------------------|------------------------------------------------|----------------------------------------------|
+| ✅ **Recommended to Use**                 | ✅ Yes – Preferred in modern JS                | ⚠️ Yes – Older and less intuitive              |
+| ➖ **Supports Negative Indices**           | ✅ Yes                                          | ❌ No – Negative treated as 0                 |
+| 🔁 **Swaps Indices if `start > end`**     | ❌ No – Returns empty string                   | ✅ Yes – Automatically swaps values           |
+| 📏 **Takes Length Instead of endIndex**   | ❌ No – Takes start and end indices            | ❌ No – Takes start and end indices           |
+
+---
+
+### 📘 Methods of String Object
+
+```js
+a. toUpperCase()               : string
+b. startsWith(string)          : boolean
+c. endsWith(string)            : boolean
+d. charAt(number)              : string
+e. charCodeAt(number)          : number
+f. indexOf(string)             : number  // -1 if not found, otherwise returns the index
+g. slice([start], [end])       : string
+h. substring([start], [end])   : string
+```
+
+---
+
+### 🔍 `split()` Method
+
+The `split()` method is used to divide a string into an array of substrings based on a specified delimiter.
+
+```js
+console.log(string.split('delimiter'));
+console.log(string.split('delimiter', how_many_splits));
+```
+
+---
+
+#### ⚠️ Corner Cases
+
+```js
+console.log("".split());                            // [""]
+console.log("".split(''));                          // []
+console.log("sachin".split());                      // ["sachin"]
+console.log("sachin,tendulkar".split('', 0));       // []
+console.log("hello user".split(undefined));         // ["hello user"]
+console.log("sachin,tendulkar".split(undefined, undefined)); // ["sachin,tendulkar"]
+console.log("sachin,tendulkar".split(null, true));  // ["sachin,tendulkar"]
+console.log("sachin,tendulkar".split(null, false)); // []
+console.log("sachin,tendulkar".split(true, null));  // []
+console.log("sachin,tendulkar".split(true, true));  // []
+console.log("P,W,,".split(','));                    // ["P", "W", "", ""]
+console.log("P,W,,I".split(','));                   // ["P", "W", "", "I"]
+console.log("P,W,".split(','));                     // ["P", "W", ""]
+```
+
+
+> 💻 Index Code :  [index-of-code.html](../Javascript-Strings/index-of-code.html)
+
+> 💻 Split Code :  [split-code.html](../Javascript-Strings/split-code.html)
+
+> 💻 Split UseCase Code :  [appendChild.html](../Javascript-Strings/appendChild.html)
+
+
+--- 
+
+### ✂️ `trim()` Method
+
+The `trim()` method is used to remove **leading and trailing white spaces** from a string.
+
+```js
+let str = '   sachin ramesh tendulkar  ';
+console.log(str, str.length);
+// Output: '   sachin ramesh tendulkar  ' 28
+
+let str = '   sachin ramesh tendulkar  ';
+console.log(str.length, str.trim(), str.trim().length);
+// Output: 28 'sachin ramesh tendulkar' 23
+```
+
+---
+
+#### 📝 Note: Conditional Statements with Methods Returning `object|null`
+
+In JavaScript, you can use **condition statements** with methods or properties that return an `object` or `null`.
+
+By default, JavaScript internally uses:
+```js
+if (someOutput != null) {
+    // truthy case
+} else {
+    // falsy case
+}
+```
+
+🔍 **Example:**
+```js
+let str = ''.someMethod(input); // returns Object|null
+
+if (str) {
+    // process for true case
+} else {
+    // process for false case
+}
+```
+#### 📂 Related Concepts:
+- `trimStart()` – Removes only leading whitespace
+- `trimEnd()` – Removes only trailing whitespace
+
+> 💻 Trim UseCase Code :  [add-reset.html](../Javascript-Strings/add-reset.html)
+
+> 💻 Validation Code :  [validation.html](../Javascript-Strings/validation.html)
