@@ -2,11 +2,12 @@ window.onload = function() {
             updateDate();
             updateTime();
             updateBackgroundColor();
-        };
+};
 function updateTime(){
     const now=new Date();
     // const timeShow=now.toLocaleTimeString();
     const hours=now.getHours();
+    
     const minutes=now.getMinutes();
     const seconds=now.getSeconds();
     const amPm=document.getElementById("amPm");
@@ -85,6 +86,7 @@ function changeTheme() {
 function updateBackgroundColor() {  
   const now = new Date();
   const hour = now.getHours();
+  
   const body = document.body;
 
   let hue, saturation, lightness;

@@ -1,60 +1,79 @@
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to top, lightblue, white);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    h1 {
-      color: black;
-      font-size: 3rem;
-      margin-bottom: 30px;
-      font-weight: 700;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .input-container {
-      display: flex;
-      gap: 10px;
-    }
+h1 {
+  font-size: 2.8rem;
+  color: #222;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
 
-    input[type="text"] {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      width: 300px;
-      outline: none;
-    }
+.input-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    button {
-      padding: 12px 20px;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+input[type="text"] {
+  padding: 12px 18px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 260px;
+  transition: 0.3s ease;
+}
 
-    button:hover {
-      background-color: rgb(134, 135, 33);
-    }
-   
-    #imageDiv {
-        margin-top: 40px;
-        max-width: 100%;
-        max-height: 400px;
-        display: none;
-        overflow: hidden;
-        border-radius: 20px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        background-color: white;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
+input[type="text"]:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 119, 255, 0.3);
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005fcc;
+}
+
+#imageDiv {
+  margin-top: 20px;
+  display: none;
+  padding: 10px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  max-height: 400px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#imageDiv img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
