@@ -1,6 +1,7 @@
 window.onload = function() {
             updateDate();
             updateTime();
+            updateBackgroundColor();
         };
 function updateTime(){
     const now=new Date();
@@ -61,25 +62,23 @@ function updateDate(){
 
 function changeTheme() {
   const checkBox = document.getElementById("ThemeCheckBox");
-  const timeElements = document.getElementsByClassName("time"); // Collection of elements with class 'time'
+  const timeElements = document.getElementsByClassName("time"); 
   const today = document.getElementById("today");
   const body = document.body;
 
   if (checkBox.checked) {
-    // Dark theme activated
     body.classList.add("bg-black", "text-white");
     for (let element of timeElements) {
       element.style.boxShadow = "6px 6px 12px purple";
     }
     today.style.boxShadow = "6px 6px 12px purple";
   } else {
-    // Light theme activated
     body.classList.remove("bg-black", "text-white");
     for (let element of timeElements) {
       element.style.boxShadow = "6px 6px 12px black";
     }
     today.style.boxShadow = "6px 6px 12px black";
-    updateBackgroundColor(); // Update the background color when switching back to light theme
+    updateBackgroundColor(); 
   }
 }
 
@@ -90,40 +89,30 @@ function updateBackgroundColor() {
 
   let hue, saturation, lightness;
 
-  // Daytime (6 AM - 6 PM)
   if (hour >= 6 && hour < 18) {
     body.classList.remove("text-white");
     body.classList.add("text-black");
-    const progress = (hour - 6) / 12; // 0 at 6AM, 1 at 6PM
-    hue = 30 + progress * 20; // Gradual color change from orange (30°) to yellow (50°)
+    const progress = (hour - 6) / 12;
+    hue = 30 + progress * 20; 
     saturation = 100;
-    lightness = 80 - Math.abs(progress - 0.5) * 40; // Lighter during midday, darker near morning/evening
-
-    // Apply dynamic background color based on the time of day
+    lightness = 80 - Math.abs(progress - 0.5) * 40; 
     body.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-  } else {
+  } 
+
+  else {
     // Nighttime (6 PM - 6 AM)
     body.classList.remove("text-black");
     body.classList.add("text-white");
     let nightProgress;
     if (hour >= 18) {
-      nightProgress = (hour - 18) / 12; // 6PM–12AM → 0–0.5, 12AM–6AM → 0.5–1
+      nightProgress = (hour - 18) / 12; 
     } else {
-      nightProgress = (hour + 6) / 12; // for 12AM–6AM
+      nightProgress = (hour + 6) / 12; 
     }
-
-    // Transition from light black (charcoal) to pure black
-    hue = 0; // No hue shift (we'll stick with dark tones)
-    saturation = 0; // No color saturation
-    lightness = 10 + (nightProgress * 50); // Light black starts at light gray (10%) and gets darker towards black (60%)
-
-    // Apply night background color (light black to black)
+    hue = 0; 
+    saturation = 0; 
+    lightness = 10 + (nightProgress * 50); 
     body.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
 }
-
-// Call this function once on page load
-updateBackgroundColor();
-
-// Optional: Set an interval to update the background color every minute (60,000ms)
 setInterval(updateBackgroundColor, 60000);

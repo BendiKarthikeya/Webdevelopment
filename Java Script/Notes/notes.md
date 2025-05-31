@@ -516,9 +516,7 @@ elements.forEach((value) =>{
 - **`innerHTML`**: Adds the element as a **child** to the targeted container or element. 👶  
 - **`outerHTML`**: **Replaces** the entire targeted element with the newly provided one. 🔁
 
-> 💻 Related Code : 
-
-<a href="../javascript-output-techniques/innerHTML-outerHTML.html">javascript-output-techniques</a>
+> 💻 Related Code :  <a href="../javascript-output-techniques/innerHTML-outerHTML.html">javascript-output-techniques</a>
 
 ---
 ### 5️⃣  `innerText` vs `outerText` ✍️
@@ -1194,6 +1192,7 @@ An **event** is anything that **happens on a webpage**. JavaScript uses these ev
 - **👀 `onblur`** → Triggered when an element loses focus.
 - **🌐 `onload`** → Triggered when the webpage finishes loading in the browser.
 
+# Strings
 
 ## ✍️ String Formatting Methods
 
@@ -1509,7 +1508,7 @@ console.log("sachin,tendulkar".split(undefined, undefined)); // ["sachin,tendulk
 console.log("sachin,tendulkar".split(null, true));  // ["sachin,tendulkar"]
 console.log("sachin,tendulkar".split(null, false)); // []
 console.log("sachin,tendulkar".split(true, null));  // []
-console.log("sachin,tendulkar".split(true, true));  // []
+console.log("sachin,tendulkar".split(true, true));  // ["sachin,tendulkar"]
 console.log("P,W,,".split(','));                    // ["P", "W", "", ""]
 console.log("P,W,,I".split(','));                   // ["P", "W", "", "I"]
 console.log("P,W,".split(','));                     // ["P", "W", ""]
@@ -1571,3 +1570,293 @@ if (str) {
 > 💻 Trim UseCase Code :  [add-reset.html](../Javascript-Strings/add-reset.html)
 
 > 💻 Validation Code :  [validation.html](../Javascript-Strings/validation.html)
+
+### 🔍 `match(regEx)` Method
+
+The `match()` method in JavaScript is used to retrieve the result of matching a string against a **regular expression**.
+
+**Syntax:**
+```javascript
+string.match(regEx)
+```
+
+**Return Type:** `Array | null`  
+- If a match is found → returns a non-empty array of matched values.
+- If no match is found → returns `null`.
+
+---
+
+### 📌 Example Usages:
+
+```javascript
+let str = '9998887776';
+let matchInput = /^\d{10}$/;
+console.log(str.match(matchInput)); 
+// ✅ Matches entire 10-digit number → returns non-empty array
+
+let str = '999888777';
+let matchInput = /^\d{10}$/;
+console.log(str.match(matchInput)); 
+// ❌ Doesn't match exactly 10 digits → returns null
+
+let str = '9998887776';
+let matchInput = /\d{10}/;
+console.log(str.match(matchInput)); 
+// ✅ Matches 10 digits anywhere in the string → returns match
+
+let str = '999888777';
+let matchInput = /\d{10}/;
+console.log(str.match(matchInput)); 
+// ❌ Only 9 digits → returns null
+
+let str = '9998887776778';
+let matchInput = /\d{10}/;
+console.log(str.match(matchInput)); 
+// ✅ Finds a 10-digit sequence within a longer string → returns match
+```
+
+---
+
+### ✅ Recommended Practice
+
+To ensure **exact match** from start to end of the string, always use `^` and `$` anchors:
+
+- `^` → Matches the beginning of the string.
+- `$` → Matches the end of the string.
+
+```javascript
+let str = '9998887776';
+let matchInput = /^\d{10}$/;
+console.log(str.match(matchInput)); 
+// Ensures the full string is exactly 10 digits long
+```
+
+> **Note:** If you do not use `^` and `$`, the regex will **partially match** substrings within the input rather than the entire string.
+
+```javascript
+let str = '9998887776778';
+let matchInput = /\d{10}/;
+console.log(str.match(matchInput)); 
+// Finds and returns the first 10-digit match even though the full string is longer
+```
+# Boolean
+
+## ✅ Boolean Type in JavaScript
+
+In JavaScript, the **boolean** type has only two possible values:
+- `true`
+- `false`
+
+### 🔢 Other values treated as Boolean:
+- Any **non-zero number** (positive or negative): `true`
+- **Zero (`0`)**: `false`
+
+### 📌 Examples:
+```javascript
+console.log(Boolean(true));    // true
+console.log(Boolean(false));   // false
+console.log(Boolean(10));      // true
+console.log(Boolean(-5));      // true
+console.log(Boolean(0));       // false
+```
+
+---
+
+### ✅ Common HTML Attributes That Behave Like Boolean
+
+Certain attributes in HTML act like boolean flags — their mere presence implies `true`, and absence implies `false`.
+
+### 📋 List of Boolean Attributes:
+
+| Attribute   | Description                                      |
+|-------------|--------------------------------------------------|
+| `checked`   | Used in `<input>` (type checkbox/radio) to show it is selected |
+| `readonly`  | Makes an input field non-editable                |
+| `required`  | Specifies that the input must be filled out before submitting |
+| `disabled`  | Disables an element                              |
+| `border`    | (On `<table>` or `<img>`) Indicates if border should be shown |
+
+> ⚠️ `border` is not a standard boolean attribute like others, but behaves similarly in older HTML specifications (e.g., `<table border>`). Modern practice recommends using CSS instead.
+
+## ➕ How `+` Operator Works in JavaScript
+
+The `+` operator behaves differently based on the types of its operands:
+
+### 🧠 Behavior:
+
+- **If both operands are numbers:** Performs **Addition**
+- **If one operand is a string:** Performs **Concatenation**
+- **If one operand is a number and the other is boolean/null/undefined:** Converts to number and performs **Addition**
+
+---
+
+### 📌 Examples:
+
+```javascript
+console.log(5 + 10);             // 15 (number)
+console.log(3.5 + 2.5);          // 6 (number)
+console.log(-1 + 4);             // 3 (number)
+console.log("3" + 2);            // "32" (string)
+console.log(2 + "3");            // "23" (string)
+console.log("5" + true);         // "5true" (string)
+console.log(10 + "5");           // "105" (string)
+console.log("5" + 10);           // "510" (string)
+console.log("Result: " + 5 + 10);  // "Result: 510"
+console.log(5 + 10 + " is the result"); // "15 is the result"
+```
+
+---
+
+## ❓ Ternary Operator
+
+### 📌 Syntax:
+```javascript
+condition ? value_if_true : value_if_false;
+```
+
+### 📌 Example:
+```javascript
+let age = 20;
+let access = (age >= 18) ? "Allowed" : "Denied";
+console.log(access); // "Allowed"
+```
+
+# 🧠 Decision Making Operators and Statements
+
+## 🔁 Comparison Operators
+
+| Operator | Description               |
+|----------|---------------------------|
+| `==`     | Equal                     |
+| `===`    | Identical Equal           |
+| `!=`     | Not Equal                 |
+| `!==`    | Identical Not Equal       |
+| `>`      | Greater than              |
+| `<`      | Lesser than               |
+| `>=`     | Greater than or equal     |
+| `<=`     | Less than or equal        |
+| `&&`     | Logical AND               |
+| `||`     | Logical OR                |
+| `!`      | Logical NOT               |
+
+---
+
+## ❓ FAQ
+
+### Q1: What is the difference between `==` and `===`?
+**A:**  
+- `==` compares **values**, and **performs type conversion** if necessary.  
+- `===` compares **both values and types** strictly — **no type conversion**.
+
+#### ✅ Example:
+```javascript
+2 == '2'   // true  => Number('2') becomes 2
+2 === '2'  // false => number !== string
+```
+
+---
+
+### Q2: How to compare a value with a regular expression?
+
+**A:**  
+Use the `.match()` method of strings.
+
+```javascript
+let mobile = "+91987654210";
+let regExp = /\+91\d{10}/;
+
+mobile == regExp        // ❌ Invalid
+mobile === regExp       // ❌ Invalid
+mobile.match(regExp)    // ✅ Valid
+```
+
+---
+
+### Q3: How to convert string `"true"` to boolean `true`?
+
+**A:**
+Use a comparison:
+
+```javascript
+let boolType = 'true' === 'true' ? true : false;
+console.log(boolType, typeof(boolType)); // true 'boolean'
+```
+
+
+
+->>> IF else notes pending
+
+
+## ✅ JavaScript Condition Evaluation: Truthy vs Falsy
+
+In JavaScript, conditionals like `if (condition)` evaluate the **truthiness** or **falsiness** of the value.
+
+---
+
+### ❌ Falsy Values
+
+The following values are considered **falsy**, meaning they evaluate to `false` in a conditional statement:
+
+1. `0`
+2. `""` (empty string)
+3. `null`
+4. `undefined`
+5. `NaN`
+6. `-0`
+7. `0n` (BigInt zero)
+
+```javascript
+if (0) console.log("This won't run");
+if ("") console.log("This won't run");
+if (null) console.log("This won't run");
+```
+
+---
+
+### ✅ Truthy Values
+
+The following values are considered **truthy**, meaning they evaluate to `true` in a conditional statement:
+
+1. Any **non-zero number** (positive or negative)  
+2. Any **non-empty string**, including `" "` (a space) or `"sachin"`  
+3. **Arrays** `[]` and **objects** `{}` (even if empty)  
+4. **Functions** like `function() {}`  
+
+```javascript
+if (42) console.log("Truthy!");
+if ("sachin") console.log("Truthy!");
+if ([]) console.log("Truthy!");
+if ({}) console.log("Truthy!");
+```
+
+--- 
+
+✅ *Remember: JavaScript treats empty values, zeros, and undefined-like values as falsy — everything else is truthy!*
+
+let a=null;
+if(a|""|undefined|NaN){
+  console.log(true);
+}
+else{
+  console.log(false);
+}
+
+tricky
+=======
+a. NaN== NaN(false)
+b. NaN === NaN(false)
+
+if(NaN===NaN){
+  cosole.log(true);
+}
+else{
+  console.log(false);
+}
+
+if(null == undefined){
+  console.log("hello")
+}
+else{
+  console.log("hey");
+}
+// hello : null and 

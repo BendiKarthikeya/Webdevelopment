@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="check" onchange="enable()">Enable | Disable
+    <dl>
+        <dt>UserName</dt>
+        <dd><input type="text" name="" id="txtName"></dd>
+        <dd id="error-msg"></dd>
+    </dl>
+    <script>
+        function enable(){
+            const userName = document.getElementById("txtName");
+            const error=document.getElementById("error-msg");
+            const checkBox=document.getElementById("check");
+            if(checkBox.checked){
+                userName.disabled=true;
+                msg.innerHTML=`Then`
+            }
+        }
+    </script>
+</body>
+</html>

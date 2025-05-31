@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <dl>
+        <dt>User Name</dt>
+        <dd><input type="text" id="txtUserName" onkeyup="verifyPwd()"></dd>
+        <dd id="err-msg">
+
+        </dd>
+    </dl>
+    <script>
+        // let str = '9998888776'
+        // let matchInput=/^\d{10}$/;
+        function verifyPwd(){
+            const pwd=document.getElementById("txtUserName");
+            const errmsg=document.getElementById("err-msg");
+
+            if(pwd.value.length<4){
+                errmsg.innerHTML='weak Password'
+                errmsg.style.color='red';
+            }
+            else{
+                let regEx=/^(?=.*[A-Z])\w{4,16}$/;
+                if(pwd.value.match(regEx)){
+                    errmsg.innerHTML='Strong Password';
+                }
+                else{
+                    errmsg.innerHTML='Poor Password';
+                    errmsg.style.color='goldenrod';
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function findGender(){
+        const male =document.getElementsById("male");
+        const female =document.getElementsById("female");
+
+        if (male.checked) {
+            console.log("MALE SELECTED")
+        }
+        else{
+            console.log("FEMLAE SELECTED")
+        }
+        }
+    </script>
+    
+</head>
+<body>
+    <div>
+        <input type="radio" name="gender" id="male" value="MALE" onchange="enableBtn()"><label></label>
+        <input type="radio" name="gender" id="female" value="FEMALE" onchange="enableBtn()"><label></label>
+        
+    </div>
+    <button type="button" onclick="findGender()" disabled  >Submit</button>
+</body>
+</html>

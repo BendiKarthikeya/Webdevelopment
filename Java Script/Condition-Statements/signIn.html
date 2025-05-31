@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="eamilBox" class="w-25">
+        <div class="card">
+            <div class="card-body">
+                <h2>Sign In</h2>
+               <label class="fw-bold form-label display-block">Enter email or mobile number</label>
+                <input type="text" id="userId" class="form-input w-100">
+                <p></p>
+                <button class="btn btn-warning w-100 mt-4" onclick="verifySignIn()">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div id="pwdBox" style="display: none;" class="w-25">
+        <div class="card">
+            <div class="card-body">
+                <h2>Sign In</h2>
+                <label class="fw-bold form-label">Password</label>
+                <input type="password" id="userPwd" class="form-input w-100">
+                <p id="errorPwd" class="text-danger"></p>
+                <button class="btn btn-warning w-100 mt-4 d-block" onclick="checkPwd()">Login In</button>
+            </div>
+        </div>
+    </div>
+    <div id="oTPBox" style="display: none;" class="w-25">
+        <div class="card">
+            <div class="card-body">
+                <h2>Sign In</h2>
+                <label class="fw-bold form-label">OTP</label>
+                <input type="password" id="userOTP" class="form-input w-100">
+                <p id="errorOTP " class="text-danger"></p>
+                <button class="btn btn-warning w-100 mt-4">Login In</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const userId=document.getElementById("userId");
+        function verifySignIn(){
+            const pwdBox=document.getElementById("pwdBox");
+            const oTPBox=document.getElementById("oTPBox");
+            const eamilBox=document.getElementById("eamilBox");
+            if(userId.value ==='karthikeya@gmail.com'){ 
+                eamilBox.style.display="none";
+                pwdBox.style.display="block";
+            }
+            else if(userId.value='9491582074'){
+                eamilBox.style.display="none";
+                oTPBox.style.display="block";
+            }
+        }
+        function checkPwd(){
+            const userPwd=document.getElementById("userPwd");
+            const errorPwd=document.getElementById("errorPwd");
+            if(userPwd.value ==='9496'){ 
+                document.write(`Succefully registered by this user Id ${userId.value}`)
+            }
+            else{
+                errorPwd.textContent="Enter valid Password";
+            }
+
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
