@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function prepareFood() {
+            //async code
+            return new Promise(function (resolve, reject) {
+
+                let isCookAvailable = false;
+
+                setTimeout(function () {
+                    if (isCookAvailable) {
+                        resolve("🍽️ Food is ready...")
+                    } else {
+                        reject("🧑‍🍳 Chef is not available...");
+                    }
+
+                }, 2000);
+            });
+
+        }
+
+        async function serveCustomer() {
+            try {
+                console.log("Order taken from customer"); //L-1
+                let msg = await prepareFood(); //L-2
+                console.log("Status is :", msg);
+
+            } catch (error) {
+                console.log("Error status is: ", error);
+
+            }
+        }
+
+        serveCustomer();//mainthread
+        console.log("Waiter served the customer with water...");//L-3
+    </script>
+</body>
+
+</html>

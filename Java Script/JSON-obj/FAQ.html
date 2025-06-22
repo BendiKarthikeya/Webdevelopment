@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const user = {
+            'name': 'sachin',
+            'age': 51,
+            isMarried: true,
+            Salary: 45456.756
+        }
+
+        console.log("********Before Deleting the Key *************");
+
+        Object.keys(user).forEach((key) => {
+            console.log(`${key}-----> ${user[key]} ----> ${typeof user[key]}`);
+        })
+        console.log("No of keys is : ", Object.keys(user).length);
+
+        delete user.isMarried;
+
+        console.log("********After Deleting the Key *************");
+        Object.keys(user).forEach((key) => {
+            console.log(`${key}-----> ${user[key]} ----> ${typeof user[key]}`);
+        })
+        console.log("No of keys is : ", Object.keys(user).length);
+
+        if ("Salary" in user) {
+            console.log("Data is ", user["Salary"])
+        } else {
+            console.log("Salary details are not disclosed");
+        }
+
+
+    </script>
+</body>
+
+</html> 

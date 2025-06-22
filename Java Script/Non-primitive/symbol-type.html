@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let id = Symbol();
+        let product = {
+            [id] : 10, 
+            'name' : 'Samsung Tv', 
+            'Price' : 45000,
+            size : 17
+        };
+
+        console.log(product);
+        for(key of Object.keys(product)){
+            console.log(key);
+        }
+
+        console.log(`product is dispatched with the order id ${product[id]}`);
+    </script>
+</body>
+</html>

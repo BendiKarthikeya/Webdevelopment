@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <button class="btn btn-danger">Cancel Event</button>
+    <h1 id="msg"></h1>
+    <script type="text/javascript">
+        let msg = document.getElementById('msg');
+        function a(){
+            msg.textContent = 'Hello User';
+        }
+        function b(){
+            msg.textContent = 'Hiee User';
+        }
+        function c(){
+            msg.textContent = 'Byee User';
+        }
+        setTimeout(a, 3000);
+        let tl2 = setTimeout(b, 6000);
+        setTimeout(c, 9000);
+
+        document.querySelector('button').addEventListener('click', function(){
+            clearTimeout(tl2);
+        });
+
+    </script>
+</body>
+</html>

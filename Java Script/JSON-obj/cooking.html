@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        console.log("Customers ordering the food");
+
+        function syncServeFood() {
+
+            console.log("🧑‍🍳Chef is preparing the food");
+
+            for (let i = 0; i < 3; i++) {
+                console.log(`🍽️ Dish is getting ready : ${i + 1}`);
+            }
+
+            console.log("Dish is served to customer");
+        }
+
+        function asynchServeFood() {
+            console.log("🧑‍🍳Chef is preparing the food");
+
+            setTimeout(() => {
+                console.log("Dish1 is getting ready");
+            }, 2000);
+
+            setTimeout(() => {
+                console.log("Dish2 is getting ready");
+            }, 1000);
+
+            setTimeout(() => {
+                console.log("Dish3 is getting ready");
+            }, 3000);
+
+            console.log("🧑‍🍳 is doing some other work");
+
+        }
+
+        //syncServeFood();
+        asynchServeFood();
+        console.log("Waiter is serving customer by giving water");
+    </script>
+</head>
+
+<body>

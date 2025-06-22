@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            min-height: 100vh;
+        }
+        #cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .card {
+            box-shadow: 0 4px 16px rgba(128,0,128,0.2), 0 1.5px 4px rgba(0,0,0,0.08);
+            border-radius: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(128,0,128,0.3), 0 3px 8px rgba(0,0,0,0.12);
+        }
+        .card-header {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0.5rem;
+        }
+        .card-body img {
+            object-fit: contain;
+            border-radius: 0.5rem;
+            background: #fff;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            max-width: 100%;
+            max-height: 150px;
+        }
+        .card-footer {
+            background: #f8f9fa;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7c3aed;
+        }
+        .rating {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-dark" onload="loadData()">
+    <div id="cards" >      
+
+    </div>
+    
+    <script>
+        async function loadData() {
+            try {  
+                const url= "https://fakestoreapi.com/products/category/jewelery";
+                let response=await fetch(url);
+                let product=await response.json();
+
+                product.forEach(element => {
+                    
+                    let card=
+                    `
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <p>${element.category}</p>
+                            </div>
+                            <div class="card-body">
+                                <img src="${element.image}" height="150" width="150">
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="bi bi-currency-rupee"></span>
+                                    <span>${element.price}</span>
+                                </div>
+                                <div>
+                                    <span>${element.rating.rate}</span>
+                                    <span class="bi bi-star-fill" style="color: gold;"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    `
+                    document.getElementById("cards").innerHTML+=card;
+                });
+                
+            } catch (error) {    
+                console.error("Error loading data:", error);
+            }
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body onload="loadData()">
+    <script>
+        async function loadData() {
+            try{
+                const url="../data/product.json";
+                console.log("Data is loaded through",url);
+                let response=await fetch(url);
+                let product=await response.json();
+                let div=document.createElement("div");
+            div.innerHTML=
+            `
+            <dl class="row">
+                <dt class="col-2">
+                    
+                        <img src="${product.Photo}" height="200" width="150">
+                </dt>
+                    <dt class="col-8 ">
+                        <h2>${product.Title}</h2>
+                        <span class="bg-success text-light">${product.Ratings.Rate}</span>
+                        <span class="bg-success bi bi-star-fill text-light"></span>
+                        <span class="text-secondary">${product.Ratings.Count} ${product.Ratings.Review} </span>
+
+                        <ul>
+                            <li >${product.Features[0]}</li>
+                            <li >${product.Features[1]}</li>
+                            <li> ${product.Features[2]}</li>
+                            <li >${product.Features[3]}</li>
+                            <li >${product.Features[4]}</li>
+                        </ul>
+                    </dt>
+                    <dt class="col-2">
+                        <p class="fw-bold"><span class="bi bi-currency-rupee">${product.Price}</span></p>
+                    </dt>
+                
+            </dl>
+            `;
+            document.body.appendChild(div);
+
+
+            }
+            catch(error){
+                console.error("Error occurred:", error);
+                document.body.innerHTML += `<p class="text-danger">Error loading product data.</p>`;
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

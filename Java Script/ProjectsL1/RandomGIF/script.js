@@ -2,6 +2,8 @@ const input = document.getElementById("userTxt");
 const button = document.getElementById("submitBtn");
 const imageDiv = document.getElementById("imageDiv");
 
+const API_KEY = "";
+
 async function fetchRandomGif(tag) {
   const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${tag}&rating=pg`;
   try {

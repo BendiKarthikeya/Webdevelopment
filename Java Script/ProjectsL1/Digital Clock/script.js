@@ -10,6 +10,9 @@ function updateTime(){
     
     const minutes=now.getMinutes();
     const seconds=now.getSeconds();
+
+
+
     const amPm=document.getElementById("amPm");
 
     if(parseInt(hours)<10){
@@ -85,7 +88,8 @@ function changeTheme() {
 
 function updateBackgroundColor() {  
   const now = new Date();
-  const hour = now.getHours();
+  // const hour = now.getHours();
+  
   
   const body = document.body;
 

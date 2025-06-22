@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["sachin", "saurav", "kohli", "dhoni", "yuvi"];
+
+        let namesArray = arr.filter(name => name.length > 5);
+        console.log(arr);
+        console.log(namesArray);
+
+        let users = [
+            {
+                userName: 'sachin',
+                userAge: 51,
+                gender: 'M'
+            },
+            {
+                userName: 'dravid',
+                userAge: 50,
+                gender: 'M'
+            },
+            {
+                userName: 'kohli',
+                userAge: 38,
+                gender: 'M'
+            },
+            {
+                userName: 'rohith',
+                userAge: 39,
+                gender: 'M'
+            }, {
+                userName: 'healy',
+                userAge: 39,
+                gender: 'f'
+            }, {
+                userName: 'smrithmandan',
+                userAge: 39,
+                gender: 'f'
+            }
+        ];
+
+        console.log(users);
+        let usersFilteredData = users.filter(user => user.userAge < 40 && user.gender === 'M');
+        console.log(usersFilteredData);
+
+        let cart = [
+            { id: 1, name: 'Laptop', price: 50000, available: true },
+            { id: 2, name: 'Mouse', price: 500, available: false },
+            { id: 3, name: 'Keyboard', price: 1000, available: true },
+            { id: 4, name: 'Monitor', price: 8000, available: false },
+            { id: 5, name: 'USB Cable', price: 200, available: true }
+        ];
+        
+        console.log(cart);
+        let availableItems = cart.filter(item=> item.available === true)
+        console.log(availableItems);
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url="../data/product.json";
+        fetch(url).then((Response)=>{
+            return Response.json();
+        }).then((product)=>{
+            delete product.Ratings;
+            console.log(product);
+        })
+    </script>
+    
+</body>
+</html>

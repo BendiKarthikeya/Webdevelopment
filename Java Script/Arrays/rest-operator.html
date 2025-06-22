@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(){
+
+        }
+        function printDetails(user){
+            const{username,age,...otherData}=user;
+            console.log(username,age);
+            console.log(otherData);
+        }
+        add();
+        add(10,"sachin");
+        add(10,'sachin',53.4);
+        add(10,'sachin',53.4,true);
+
+        let user={
+            username:'sachin',
+            age:51,
+            gender:'M',
+            email:'sachin@mi.com',
+            isMarri
+        }
+    </script>
+</body>
+</html>

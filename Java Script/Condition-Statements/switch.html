@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script type="text/javascript">
+
+        let regEx='';
+        let data = '';
+
+        function changeCountry() {
+
+            console.log("control in function selectCountry()");
+
+            //Get the country details choosen by the user
+            const countryName = document.getElementById("lstCountries").value;
+            const poster = document.getElementById("imgFlag");
+            const mobiles = document.getElementById("txtMobile");
+            console.log(mobiles);
+            
+            /*
+                Based on the country perform operation
+                    a.Choose the image and bind to UI
+                    b.In mobile field keep the format of mobile number 
+            */
+            switch (countryName) {
+                case 'IND':
+                    poster.src='../../public/images/india-flag.JPG';
+                    mobiles.placeholder = '+91 and 10digits';
+                    data = mobiles.placeholder;
+                    regEx=/^\+91\d{10}$/;
+                    break;
+                case '' : 
+                    poster.src='';
+                    mobiles.placeholder = ''
+                    break;
+                case '' :
+                    poster.src='';
+                    mobiles[0].placeholder = '' 
+                    break;
+            
+                default:
+                    poster.src='';
+                    poster.alt = 'N|A'
+                    mobiles.placeholder = 'N|A'
+                    break;
+            }
+        }
+
+        function verifyMobileNumber() {
+            //Read the value from the placeholder of mobileText
+            const mobile = document.getElementById("txtMobile").value;
+            const msg = document.getElementById("error");
+
+            //use the pattern and  match based on condition print the result
+            if (mobile.match(regEx)) {
+                msg.textContent = 'Mobile Number Verified succesfully';
+                msg.className = 'text-success h2 text-center';
+            } else {
+                msg.textContent = `Invalid MobileNumber : ${data}`;
+            }   
+        
+        }
+    </script>
+
+</head>
+<body class="container-fluid">
+
+    <div class="w-25 mt-3 border border-2 border-black rounded-2 p-4">
+
+        <h2> Verify Mobile</h2>
+        <dl>
+            <dt>
+                Select Your Country 
+            </dt>
+            <dd>
+                <img width="50" height="50" id="imgFlag">
+            </dd>
+            <dd>
+                <select name="" id="lstCountries" class="form-select" 
+                        onchange="changeCountry()">
+                    <option>Select Country</option>
+                    <option value="IND">INDIA</option>
+                    <option value="UK">UnitedKingdom</option>
+                    <option value="USA">UnitedStates of America</option>       
+                </select>
+            </dd>
+
+            <dt>
+                Your Mobile
+            </dt>
+            <dd>
+                <input type="text" name="" id="txtMobile" class="form-control">
+            </dd>
+            <button class="btn btn-primary w-100" onclick="verifyMobileNumber()">Verify</button>
+        </dl>    
+    </div>
+    <p class="text-center text-danger h2" id="error"></p>
+</body>
+</html>
+
+</html>

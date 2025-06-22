@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            "userName" : "sachin",
+            "age" : 51,
+            "teams" : ["MI","CSK"],
+            "records": {
+                "Centuries" : 100,
+                "Average" : 53.4,
+                "Brand" : "MRF"
+            },
+            "isMarried" : true
+        };
+        console.log("user name is "+ user.userName);
+        console.log("User age is "+ user.age);
+        console.log("records is :")
+        // user.records.forEach(element => {
+        //     console.log(element + "is" );
+        // });   
+        user.teams.forEach(team => console.log(team));
+        console.log(user.records.Brand);
+        let weirdObj = {"first-Name": "Akhil",
+            "123" : "number"
+        }
+        console.log(weirdObj["first-Name"]);
+        console.log(weirdObj["123"]);     
+    </script>
+</body>
+</html>

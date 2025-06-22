@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body{
+            height: 100vh;
+        }
+
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light" onload="loadCities()">
+
+    <div class="p-4 rounded shadow bg-white" style="min-width: 300px; max-width: 400px;">
+        <h2 class="mb-3 text-center">Array Manipulation</h2>
+
+        <label for="cityInput" class="form-label">Add City</label>
+        <div class="input-group mb-3">
+            <input type="text" id="cityInput" class="form-control" placeholder="New City Name">
+            <button class="btn btn-primary" id="addCityBtn" onclick="addCity()">Add</button>
+        </div>
+
+        <label class="form-label fw-bold">Select City</label>
+        <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-success" onclick="sortDesc()">
+                <i class="bi bi-sort-alpha-up"></i>
+            </button>
+            <button class="btn btn-success" onclick="sortAsc()">
+                <i class="bi bi-sort-alpha-down"></i>
+            </button>
+        </div>
+
+        <select id="citeNames" class="form-control mb-3" size="3" >
+
+
+        </select>
+
+        <label class="form-label fw-bold" id="noOfCities">  </label>       
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" onclick="">
+                <i class="bi bi-trash3-fill"></i> Remove City
+            </button>
+            <button class="btn btn-danger" >
+                <i class="bi bi-trash3"></i> Clear All
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        let cities=['Bengaluru','Hyderbad'];
+        let cityNames=document.getElementById("citeNames");
+        function loadCities() {
+            
+            cities.forEach(city=>{
+                option=document.createElement("option");
+                option.value=city;
+                option.textContent=city;
+                cityNames.appendChild(option);
+            })
+            document.getElementById("noOfCities").textContent=`Total Number of cities is : ${cities.length}`;
+        }
+        
+        function addCity(){
+            const cityInput=document.getElementById("cityInput");
+            const cityName=cityInput.value;
+            if(cities.indexOf(cityName)==-1 && cityName!=''){
+                alert(`${cityName} is added`)
+                cityNames.innerHTML='';
+                cities.push(cityName);
+                loadCities()
+            }
+            else if(cityName==''){
+                 alert('Enter the valid city Name');
+            }
+            cityInput.value='';   
+        }
+         
+        function sortDesc(){
+            cities.sort().reverse();
+            cityNames.innerHTML='';
+            loadCities()
+        }
+        function sortAsc(){
+            cities.sort();
+            cityNames.innerHTML='';
+            loadCities()
+        }
+
+
+    </script>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

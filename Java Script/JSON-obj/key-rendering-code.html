@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url="../data/product.json"
+        fetch(url)
+        .then(response=>response.json())
+        .then(product=>{
+            Object.keys(product).forEach((key)=>{
+            console.log(key);
+            })
+
+            const[username,userage]=Object.keys(product);
+            console.log(username,userage);
+
+            Object.keys(product).forEach((key)=>{
+                console.log(user[key]);
+            })
+
+        });
+        
+        
+    </script>
+    
+</body>
+</html>
