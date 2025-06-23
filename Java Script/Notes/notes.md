@@ -3066,6 +3066,9 @@ var mfd = new Date("YYYY-MM-DD");
 
 > 💻 date-code  :  [date.html](../Non-primitive/date.html)
 
+> 💻 dateDiffFormate-code  :  [dateDiffFormate.html](../Non-primitive/dateDiffFormate.html)
+
+
 ## setTimeout(callbackfunction, timerinms, args)
 
 a. Function inside the setTimeout forms a closure and remembers reference to `i`.
@@ -3093,15 +3096,27 @@ x();
 10
 ```
 
-It prints this way because of the closure.
+## How `setTimeout` Actually Works in JS?
 
-A closure function along with its lexical environment.
+➔ It takes a **callback function** and stores it somewhere and attaches a **timer** of specific time to it.  
+➔ Once the **timer expires**, it takes the function and **puts it into the call stack** and runs it.  
+➔ When the timer expires then it **calls the callback function**.
 
-Even if a function is taken from its original scope and executed in another scope still it remembers its lexical environment.  to i not the value of 1.
+---
 
-Function inside setTimeout refers to the same reference (it refers to the same memory space Javascript stores all the functions one by one and it moves on. It will not wait for the timer to expire.
+## 🎯 Tricky Interview Question
 
-When the timer expires it is too late. When the call back function runs by that time 1-6. That's the reason it prints 6 in
+### (Printing 1 after 1 sec, 2 after 2 sec..so on)
+
+**Eg-1:**
+
+➔ It prints this way because of the **closure**.  
+➔ A **closure** is a function along with its **lexical environment**.  
+➔ Even if a function is taken from its original scope and executed in another scope, still it **remembers its lexical environment**.  
+➔ Function inside `setTimeout` refers to the **same reference** (it refers to the same memory space) to `i`, **not the value of `i`**.  
+➔ Javascript stores all the functions one by one and **it moves on**. It will not wait for the timer to expire.  
+➔ When the **timer expires**, it is too late. When the callback function runs, by that time `i = 6`.  
+That’s the reason it prints **6 in all**.
 
 
 #### Using of var 
@@ -3260,6 +3275,120 @@ let add = () => {
 ```
 <img src="./Images/function.png">
 
-
 > 💻 function-code  :  [index.html](..//Functions/index.html)
 
+
+## ⚙️ Function Expression and Arrow Function Differences
+
+### 🧠 Memory Behavior
+- In case of **function expressions**, memory changes **dynamically** as per the state and situation.
+- ❗ **Function expressions are not hoisted**, because their variables fall under the **Temporal Dead Zone (TDZ)**.
+
+---
+
+## ⚔️ Difference Between Arrow Functions and Function Expressions
+
+### ✍️ Syntax
+
+```js
+// Function Expression
+const add = function(a, b) {
+  return a + b;
+};
+
+// Arrow Function
+const add = (a, b) => a + b;
+```
+
+---
+
+### 🔄 `this` Behavior (Major Difference)
+
+#### 🔹 Function Expression
+- `this` is **dynamic** – depends on how the function is called.
+
+```js
+const obj = {
+  name: "Sachin",
+  greet: function() {
+    console.log("Hi " + this.name);
+  }
+};
+obj.greet(); // Hi Sachin
+```
+
+#### 🔸 Arrow Function
+- `this` is **lexical** – it inherits `this` from the **surrounding scope**.
+
+```js
+const obj = {
+  name: "Sachin",
+  greet: () => {
+    console.log("Hi " + this.name);
+  }
+};
+obj.greet(); // Hi undefined (because `this` refers to outer/global)
+```
+
+```js
+const obj = {
+  name: "Sachin",
+  greet: () => {
+    console.log("Hi " + name);
+  }
+};
+obj.greet(); // ❌ ReferenceError: name is not defined
+```
+
+---
+
+## 📦 `arguments` Object
+
+### ❓ What is `arguments` in JavaScript?
+- `arguments` is a built-in object available **only inside regular functions** (not arrow functions).
+- It contains **all the arguments** passed to the function, even if not explicitly declared.
+
+---
+
+### ✅ Function Expression
+
+```js
+function printArgs() {
+  console.log(arguments);
+}
+printArgs(1, 2, 3); // [1, 2, 3]
+```
+
+#### 🔍 Feature Table
+
+| Feature                  | Value                                        |
+|--------------------------|----------------------------------------------|
+| Type                     | Array-like object (not real array)          |
+| Indexable                | ✅ Yes (e.g., `arguments[0]`)                |
+| `.length` Supported      | ✅ Yes                                       |
+| Iterable with for loop   | ✅ Yes                                       |
+| Real Array Methods       | ❌ No (need conversion)                      |
+
+---
+
+### 🔁 Convert `arguments` to Real Array
+
+```js
+function printArgs() {
+  let args = Array.from(arguments);
+  console.log(Array.isArray(args)); // true
+  console.log(args.map(x => x * 2)); // [10, 20]
+}
+printArgs(5, 10);
+```
+
+---
+
+### 🚫 Arrow Function: No `arguments` Support
+
+```js
+const printArgs = () => {
+  console.log(arguments);
+};
+printArgs(1, 2, 3); // ❌ Error: arguments is not defined
+```
