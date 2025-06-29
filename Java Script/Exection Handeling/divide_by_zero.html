@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class DivideByZeroError extends Error {
+            constructor(msg) {
+                super(msg);
+            }
+        }
+        function divide(a, b) {
+            if (b === 0) {
+                throw new DivideByZeroError("Can't divide by Zero");
+
+            }
+            console.log("result is : ", (a / b));
+        }
+
+        try {
+            divide(10, 0);
+        } catch (error) {
+            console.log("Cause of Exception is : ", error.message);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

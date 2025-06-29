@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //password : ....
+        //let success = ()=>{}
+        //let failure = ()=>{}
+        function verifyURL(URL, success, failure) {
+            if (URL === 'http://fakestoreapi.com/products') {
+                success({ 'Status': "Resource Found", 'StatusCode': 200, "Data": ['Electronics', 'MensCloting', 'Mobiles'] });
+            } else {
+                failure({ 'Status': "Resource Not Found", 'StatusCode': 404, });
+            }
+        }
+
+        verifyURL(prompt("Ente the URL"), function (response) {
+            document.write(`<h2 style='color:green;'> Response Succesfull </h2>`);
+
+            const ul = document.createElement("ul");
+            response.Data.forEach((element) => {
+                let li = document.createElement("li");
+                li.textContent = element;
+                ul.appendChild(li);
+            })
+            document.body.appendChild(ul);
+        }, function () {
+            document.write(`<h2 style='color:red;'> Response Failed </h2>`);
+        })
+    </script>
+</body>
+
+</html>

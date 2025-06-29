@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Check</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function doTask(response, success, failure) {
+            if (response === "fakestore") {
+                success({
+                    Resource: "Found",
+                    Status: 200,
+                    Data: ["Electronics", "Clothing", "Shoes"]
+                });
+            } else {
+                failure();
+            }
+        }
+
+        doTask(
+            prompt("Enter store name"),
+            function (stuff) {
+                console.log(stuff.Data);
+            },
+            function () {
+                console.log("STATUS 404 NOT FOUND");
+            }
+        );
+    </script>
+</body>
+</html>

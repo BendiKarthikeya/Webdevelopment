@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //conditional rendering
+        function doTask(operation)
+        {
+            if(operation === "LOGIN")
+            {
+                return `<dl>
+                        <dt>UserName</dt>
+                        <dd>
+                            <input type="text" name="username">
+                        </dd>
+                        <dt>Password</dt>
+                        <dd>
+                            <input type="text" name="pass">
+                        </dd>
+                        <dd>
+                            <button> LOGIN </button>
+                        </dd>
+
+                    </dl>`;
+            }
+            else{
+                return `<dl>
+                        <dt>Email</dt>
+                        <dd>
+                            <input type="text" name="username">
+                        </dd>
+                        <dt>Password</dt>
+                        <dd>
+                            <input type="text" name="pass">
+                        </dd>
+                        <dt>Confirm Password</dt>
+                        <dd>
+                            <input type="text" name="pass">
+                        </dd>
+                        <dd>
+                            <button> REGISTER </button>
+                        </dd>
+
+                    </dl>`;
+
+            }
+
+        }
+        let result = doTask(prompt("Login or Register (allcaps)"));
+        let div = document.createElement("div");
+        div.innerHTML = result;
+        document.body.appendChild(div);
+    </script>
+</body>
+</html>

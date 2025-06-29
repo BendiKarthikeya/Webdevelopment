@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store API</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Create a new promise
+        let promise = new Promise(function(resolve, reject) {
+            const URL = "https://fakestoreapi.com/products";
+            if (URL === "https://fakestoreapi.com/products") {
+                resolve(URL);
+            } else {
+                reject("Invalid URL");
+            }
+        });
+
+        // Define an async function to use await
+        async function fetchData() {
+            try {
+                const URL = await promise;
+                const response = await fetch(URL);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error("Error occurred:", error);
+            } finally {
+                console.log("Executed successfully");
+            }
+        }
+
+        fetchData();
+
+        console.log("Script is doing some other job...");
+    </script>
+</body>
+</html>

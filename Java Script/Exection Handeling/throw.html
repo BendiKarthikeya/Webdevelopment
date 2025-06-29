@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class divideByZeroError extends Error {
+            constructor(message) {
+                super(message);
+            }
+        }
+        function divide(a,b) {
+            if(b === 0) {
+                throw new divideByZeroError("Division by zero is not allowed.");
+            }
+            console.log("result: " + (a / b));
+        }
+        try {
+            divide(4, 0);
+        } catch (error) {
+            console.error(error.name + ": " + error.message);
+        }
+    </script>
+
+
+</body>
+</html>

@@ -3275,7 +3275,7 @@ let add = () => {
 ```
 <img src="./Images/function.png">
 
-> 💻 function-code  :  [index.html](..//Functions/index.html)
+> 💻 function-code  :  [index.html](../Functions/index.html)
 
 
 ## ⚙️ Function Expression and Arrow Function Differences
@@ -3391,4 +3391,466 @@ const printArgs = () => {
   console.log(arguments);
 };
 printArgs(1, 2, 3); // ❌ Error: arguments is not defined
+```
+
+## Array
+
+- ➤ **Heterogeneous**: Can hold elements of different types (numbers, strings, objects, etc.)
+- ➤ **Static Initialization**:
+  ```js
+  let arr = [];
+  ```
+- ➤ **Dynamic Initialization**:
+  ```js
+  let arr = new Array(size);
+  ```
+
+### ⚠️ Example:
+
+```js
+let arr = new Array(-3);         // ❌ RangeError: Invalid array length
+console.log(arr[-1]);            // undefined (treated as a property, not index)
+```
+## 📅 Date in JavaScript
+
+JavaScript provides the `Date` object to work with dates and times.
+
+---
+
+### 📌 Example 1: Getting the Year
+
+```js
+let date = new Date();
+let year = date.getUTCFullYear(); // ✅ Correct: getUTCFullYear is a method, so use ()
+console.log(year);
+```
+
+- `new Date()` creates a new Date object with the current date and time.
+- `getUTCFullYear()` returns the **4-digit year** of the date in **UTC time**.
+- Always use **parentheses** when calling a method — `getUTCFullYear()` is a method, not a property.
+
+---
+
+### 📌 Example 2: Invalid Date Handling
+
+```js
+let info = new Date("2025-02-30");
+console.log(info.getDate());
+```
+
+- `"2025-02-30"` is an **invalid date** (February doesn't have 30 days).
+- JavaScript automatically **corrects** the date by rolling over to the **next valid day**.
+- So `new Date("2025-02-30")` becomes `"2025-03-01"` internally.
+- `getDate()` returns `1` in this case — the adjusted day of the month.
+
+---
+
+### ✅ Notes:
+
+- JavaScript is **lenient** with invalid dates — it adjusts them.
+- Always validate user input when working with real-world date values to prevent logic bugs.
+
+## Points to remember while writing an arrow function by comparing it with function expression
+
+a. `arguments` inbuilt property available in function expression but not in arrow function
+
+b. `this` keyword is very useful in function expression style (it refers to the current object), but not in arrow function (it refers to the outer/global scope)
+
+c. Function expression can be used as a constructor, but arrow function can't be used as a constructor
+
+eg#1
+
+```javascript
+// person is an object  : constructor [ES5 syntax]
+let Person = function (name) {
+    this.name = name;
+};
+
+let obj = new Person("sachin");
+console.log(obj.name); // sachin
+
+// student is not an object : constructor can't be called
+let student = (name) => this.name = name;
+let obj1 = new student("Sathya"); // TypeError: student is not a constructor
+console.log(obj1.name);
+```
+
+eg#2 Solution using ES6+ syntax
+
+```javascript
+class Dog {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+let d = new Dog("Bruno");
+console.log(d);
+```
+
+---
+
+d. Anonymous function
+- It refers to a function without a name
+- As per ECMA Script standards, every function should have a name
+- If we want to call an anonymous function then we need to use an **IIFE** (Immediately Invoking Function Expression)
+
+eg#1.
+
+```javascript
+(function () {
+    console.log("I don't have name to call");
+})();
+```
+
+---
+
+e. Named function expression
+
+```javascript
+let doLogic = function helloUser() {
+    console.log("I don't have name to call");
+};
+
+doLogic();
+helloUser(); // ReferenceError
+```
+
+---
+
+**FAQ:**  
+💡 *Can a function return multiple values?*  
+✅ Yes, it can return based on some conditions (*Conditional Rendering*).
+
+> 💻 **Example Code:** [index.html](../Functions/function-expression.html)
+
+## What is a callback function? 🤔
+
+✅ **Ans.**  
+It is a mechanism in JavaScript where a **function body can be passed as an argument to another function**.  
+It is the duty of the function receiving it to **call it whenever it wants to**.
+
+- **Callback function can be used as per our requirement:**  
+  - **Synchronous** mode  
+  - **Asynchronous** mode
+
+✨ **Asynchronous examples (using Web APIs):**
+- `setTimeout()`
+- `fetch()`
+- `Promise`
+
+> 💻 **Example Code:** [index.html](../Functions/callback.html)
+
+## Callbacks Used in Asynchronous Style ⚡
+
+**Promise** is just like a real-life promise that you make.
+
+✅ **It has 3 phases:**
+1. **Initial:** not yet started, ready to start
+2. **Resolve:** successfully completed
+3. **Reject:** unable to fulfill the promise
+
+---
+
+- A **Promise** is *implicitly asynchronous*.
+  - It can execute other tasks without blocking the process.
+  - They are better in performance compared to *callbacks in synchronous mode*.
+
+---
+
+✨ **Promise can be used instead of callbacks to handle async operations.**
+
+✅ **Promise provides:**
+- **`then()`** — executed when promise is fulfilled.
+- **`catch()`** — executed when promise is rejected.
+- **`finally()`** — executed in all situations.
+
+Note: finally block of promise handling will be executed irrespective of resolve()|reject().
+
+> 💻 **Example Code:** [index.html](../Functions/synch-callback-code.html)
+
+> 💻 **Example Code:** [index.html](../Functions/promise-callback-code.html)
+
+> 💻 **Example Code:** [index.html](../Functions/asynch-callback-code.html)
+
+
+
+Call back used in asynchronous style
+
+
+
+
+  ->notes 
+
+
+<img src="./Images/execption.png" height="350" width="800">
+
+* At runtime, problems would occur due to faulty inputs given by the user to the application as a result of which os might crash | hardware device might be under trouble. to Resolve this problem the runtime engine should give a functionality to handle the exception, we call that mechanism as 'Exception Handling' 
+
+
+# ⚠️ Error Handling in JavaScript
+
+### ✅ Syntax
+
+```javascript
+try {
+  // risky code
+} catch (error) {
+  // handling code
+} finally {
+  // cleanup resources (always runs)
+}
+```
+## 📘 Promise
+
+```javascript
+let promiseApi = new Promise(function (resolve, reject) {
+    if (condition) {
+        resolve();
+    } else {
+        reject();
+    }
+});
+
+// Consuming an API
+promiseApi()
+    .then(function () {
+        // successful
+    })
+    .catch(function (error) {
+        // handle error
+    })
+    .finally(function () {
+        // always runs
+    });
+```
+
+
+
+## ✨ Alternative Solution in ECMA+6
+
+#### Using async and await
+
+```javascript
+function promiseApi() {
+    return new Promise(function (resolve, reject) {
+        if (condition) {
+            resolve();
+        } else {
+            reject();
+        }
+    });
+}
+
+async function consumeApi() {
+    try {
+        await promiseApi();
+    } catch (error) {
+        // handle error
+    } finally {
+        // always runs
+    }
+}
+```
+
+
+
+## ❓ What is Exception and What is Exception Handling?
+
+**Answer:**
+
+Exception are runtime mistakes which happen due to faulty inputs given by the user to the application.  
+Because of faulty input, the application would result in **Abnormal Termination**.  
+To resolve the problem of abnormal termination we use **Exception Handling Mechanism**.  
+Exception handling promotes **graceful termination of a program** (it will not affect OS or hardware devices of the user).
+
+---
+
+### ✏️ Syntax
+
+```javascript
+try {
+    // risky code
+} catch (error) {
+    // handling code
+} finally {
+    // resource releasing code
+}
+```
+
+### 📝 Note: Details in the `error` object
+
+| Property  | Description                           |
+|-----------|---------------------------------------|
+| name      | Type of error (e.g., `TypeError`)     |
+| message   | Description of the error              |
+| stack     | Stack trace (developer debugging info)|
+
+
+> 💻 **Example Code:** [index.html](../Exection%20Handeling/try-catch.html)
+```
+Output: 
+program started the execution
+index.html:18 Error Name is :  ReferenceError
+index.html:19 Error Message is :  undeclaredVar is not defined
+index.html:20 Stack trace is :  ReferenceError: undeclaredVar is not defined
+    at http://127.0.0.1:5500/Exception%20handling/index.html:15:25
+index.html:23 Graceful termination
+```
+
+> 💻 **Example Code:** [index.html](../Exection%20Handeling/divide_by_zero.html)
+
+```
+Output
+Cause of Exception is :  Can't divide by Zero
+```
+
+### Usage of finally block
+
+✅ It is such a block which gets executed irrespective of whether exception occurs or doesn't occur.  
+✅ Inside `finally` block we normally write the logic of closing the resources.
+
+```javascript
+try {
+    // risky code
+} catch (error) {
+    // handling code
+} finally {
+    // resource releasing code
+}
+```
+
+### 💻 Example
+
+```javascript
+console.log("program started the execution");
+try {
+    let json = '{name : "Sachin","age":51}';
+    let user = JSON.parse(json);
+    console.log(user.name); // sachin
+} catch (error) {
+    console.log("parsing error:", error.name);
+} finally {
+    console.log("Execution completed");
+}
+```
+
+### 🟢 Output
+
+```
+program started the execution
+parsing error: SyntaxError
+Execution completed
+```
+
+
+> 💻 **Example Code:** [index.html](../Exection%20Handeling/termination.html)
+
+#### Output
+* Connecting to database  
+* Resource releasing logic
+
+**Note:** All the exceptions in JavaScript belong to **Unchecked Exceptions**
+
+
+> 💻 **Example Code:** [finally.html](../Exection%20Handeling/finally.html)
+
+---
+
+### 📚 Error Types
+
+- **SyntaxError**
+- **ReferenceError**
+- **TypeError**
+
+These errors are all objects derived from the `Error` base object.
+
+## 💡 Where Exception Handling is Needed
+
+✅ **Requires Exception Handling**
+- **JavaScript Server-Side (Node.js)**
+- **Databases (MongoDB)**
+- **UI Frameworks (React)**
+
+❌ **Does NOT Require Exception Handling**
+- **HTML & CSS + JavaScript** (basic scripting)
+
+> 💻 **Example Code:** [throw.html](../Exection%20Handeling/throw.html)
+
+* All exexptions in JS are unchecked exexptions (these execeptions are not checked by compliler during memory allocation phase).
+
+Rest operator
+=============
+✅ This operator is used to bind multiple values under a single variable.
+
+**Syntax:**  
+```javascript
+function collectData(...variable) {
+   console.log(variable);
+}
+collectData(10, 'sachin', 53.5, true);
+```
+
+**Example with object destructuring:**
+```javascript
+let userData = {
+   'name': 'sachin',
+   'age': 51,
+   'gender': 'M'
+};
+
+const { name, ...otherDetails } = userData;
+console.log(name);         // sachin
+console.log(otherDetails); // { age: 51, gender: 'M' }
+```
+
+---
+
+Spread Operator
+===============
+✅ It is used to spread elements into multiple values.
+
+**Syntax:**  
+```javascript
+function collectData(...variable) {
+   console.log(variable);
+}
+
+let data = [10, 'sachin', 53.5, true];
+collectData(...data);
+```
+
+```html
+<!-- eg#1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let userData = [10, 'sachin', 53.5, true];
+        let updatedData = [...userData, 'M'];
+        console.log(updatedData);
+
+        let obj = { 'name': 'kohli', 'age': 37, 'gender': 'M' };
+        let updatedObj = { ...obj, 'name': 'viratKohli', 'isMarried': true };
+        console.log(updatedObj);
+    </script>
+</body>
+
+</html>
+```
+
+```javascript
+// eg#2
+
+let obj = { 'name': 'kohli', 'age': 37, 'gender': 'M' };
+const { name, ...otherDetails } = obj;
+console.log(otherDetails);
 ```

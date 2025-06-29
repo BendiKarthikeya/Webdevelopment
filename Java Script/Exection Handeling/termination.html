@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("program started the execution");
+
+        try {
+            let json = '{name : "Sachin","age":51}';
+            let user = JSON.parse(json);
+            console.log(user.name);//sachin
+
+        } catch (error) {
+            console.log("parsning error: ",error.name);// Synatax Error because of name not wrote in string
+        }finally{
+            console.log("Execution completed")
+        }
+    </script>
+</body>
+</html>
+
