@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            display: grid;
+            grid-template-columns: 4fr 8fr;
+        }
+        .active{
+            border: 2px solid red;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <nav>
+            <div>
+                <div><img src="../public/images/iphone-12.webp" onmouseover="displayImage(this)" width="80px" height="100px"  alt=""></div>
+            </div>
+            <div>
+                <div><img src="../public/images/iphone-12.webp" onmouseover="displayImage(this)" width="80px" height="100px"  alt=""></div>
+            </div>
+            <div>
+                <div><img src="../public/images/iphone-12.webp" onmouseover="displayImage(this)" width="80px" height="100px"  alt=""></div>
+            </div>
+            <div>
+                <div><img src="../public/images/iphone-12.webp" onmouseover="displayImage(this)" width="80px" height="100px"  alt=""></div>
+            </div>
+        </nav>
+        <main>
+            <div>
+                <img id="mainImage" src="" width="400px" height="400px"  alt="">
+            </div>
+        </main>
+    </section>
+    <script>
+        function displayImage(image) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = image.src;
+            document.querySelectorAll('nav img').forEach(img => {
+                img.classList.remove('active');
+            });
+            image.classList.add('active');
+        }
+
+    </script>
+    
+</body>
+</html>

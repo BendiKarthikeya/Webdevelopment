@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="loadData()">
+    <h2> User Login </h2>
+    <dl>
+        <dt>Username</dt>
+        <dd>
+            <input type="text" id="txtUserName">
+        </dd>
+        <dt>Password</dt>
+        <dd>
+            <input type="password" id="txtUserPwd"><br><br>
+            <button type="button">Login </button>
+        </dd>
+    </dl>
+    <p id="msg"></p>
+
+    <script type="text/javascript">
+        async function retriveData(Username,Password) {
+            
+            const URL = "../data/credentials.json"
+            let response=await fetch(URL);
+            let users=response.json();
+            let isAvailable;
+            /* for (const user of users) {
+                if (user.userName === username && user.password === password) {
+                    isAvailable = true;
+                    break;
+                }
+            } */
+
+            //if found : {K:V,K:V}, otherwise undefined
+
+            isAvailable=users.find(user=>user.userName === Username && user.password ===Password);
+             if (!isAvailable) {
+                document.getElementById("msg").innerHTML = `<h1 style='color:red;'> Invalid Credentails </h1>`
+            } else {
+                document.write("<h2 style='color:green;'>Login Succesfull</h2>");
+            }
+
+
+
+        }
+        function loadData(){
+            let txtName=document.getElementById("txtUserName").value;
+            let txtPwd=document.getElementById("txtUserPwd").value;
+            retriveData(txtName,txtPwd);
+        }
+    </script>
+
+</body>
+</html>

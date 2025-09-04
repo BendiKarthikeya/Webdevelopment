@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function sendData() {
+             let data=document.getElementById("txtName").value;
+             if (data==='') {
+                location.href='index.html';
+             } else {
+                 localStorage.setItem("username",data);
+                 location.href="process.html";
+                
+             }
+        }
+    </script>
+</head>
+<body>
+    
+    <dl>
+        <h3>Login page</h3>
+        <dt>Username</dt>
+        <dd>
+            <input type="text" name="Username" id="txtName">
+        </dd>
+    </dl>
+    
+    <button onclick="sendData()">login</button>
+    
+</body>
+</html>

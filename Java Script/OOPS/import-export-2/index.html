@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="module">
+        import PI, { sum as add,mulit } from './App.js';
+        import { sub as diff } from './index.js';
+
+
+        console.log("The sum of Two numbers is : " + add(10, 20)); //The sum of Two numbers is : 30
+        console.log("The sub of Two numbers is : " + diff(10, 20));//The sub of Two numbers is : 10
+        console.log("PIE value is : " + PI);//3.1414
+
+    </script>
+</body>

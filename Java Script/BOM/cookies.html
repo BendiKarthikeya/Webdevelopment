@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script type="text/javascript">
+        
+        console.log(document.cookie);
+        document.cookie = "test=cookieEnabled";
+        console.log(document.cookie);
+        let cookieEnabled = document.cookie.indexOf("test=cookieEnable") !== -1;
+        document.write(`
+                Your Browser Version : ${navigator.appVersion} <br>
+                  Cookies : ${cookieEnabled ? "You can login " : "Enable cookies"} <br>
+                  Platform : ${navigator.platform}<br>
+                  Language : ${navigator.language}
+                `)
+        
+        for (const plugin of navigator.plugins) {
+                document.write(plugin.name +"<br>");
+        }
+        for (const mime of navigator.mimeTypes) {
+        document.write(mime.type +"<br>")
+        }
+        console.log(navigator)
+
+     </script>
+
+</body>
+
+</html>

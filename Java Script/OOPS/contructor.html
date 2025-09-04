@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Parent{
+            constructor(name, age,gender){
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+            }
+        }
+        class Child extends Parent{
+            constructor(name, age, gender, school){
+                super(name, age, gender);
+                this.school = school;
+                document.write(`Name: ${this.name} <br> Age: ${this.age} <br> Gender: ${this.gender} <br> School: ${this.school}`);
+            }
+        }
+
+        let obj=new Child("karthikeya","19","M","PW");
+        console.log(obj);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function loginCheck() {
+            console.log("hey did u clicked");
+            var username = document.getElementById("userName").value;
+            console.log(username);
+
+            var password = document.getElementById("userPwd").value;
+            console.log(password);
+            
+            if (username === "nitin" && password==="nitin") {
+                location.href='./index.html';
+            } else {
+                location.href='error-code.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Username</dt>
+        <dd>
+            <input type="text" name="" id="userName">
+        </dd>
+        <dt>Password</dt>
+        <dd>
+            <input type="password" name="" id="userPwd">
+        </dd>
+    </dl>
+    <button onclick="loginCheck()">login</button>
+</body>
+</html>
+

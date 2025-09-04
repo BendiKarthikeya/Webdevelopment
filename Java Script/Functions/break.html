@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dl>
+        <dt>UserName</dt>
+        <dd><input type="text" name="" id="txtUserName"></dd>
+        <p id="msg"></p>
+    </dl>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            document.getElementById("txtUserName").addEventListener("keyup",function(){
+                let msg=document.getElementById("msg");
+
+                let data=this.value.trim();
+                let flag=false;
+
+                const URL='../data/credentials.json';
+                fetch(URL).then(function(response){
+                    return response.json();
+                }).then(function(users){
+                    for(const user of users){
+                        if(user.userName === data){
+                            flag=true;
+                            break;
+                        }
+                    }
+                    if(flag){
+                        msg.innerHTML="User Name is Not Avaliable".fontcolor("red");
+                    }
+                    else{
+                        msg.innerHTML="User Name is Avaliable".fontcolor("green");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

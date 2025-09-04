@@ -1,0 +1,8 @@
+[{
+    "Category" : "Electronics",
+    "Items" : ["TV","Mobiles","Watches"]
+},
+{
+    "Category" : "Fashion",
+    "Items" : ["Kids","Mens","Womens"]
+}]

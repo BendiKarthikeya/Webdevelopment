@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="m-3 bg-danger">
+    <img src="../public/images/kfdBanner.png" width="100%" height="380px">
+    <div class="accordion " id="accordionExample" >
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed bg-danger text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Customer Details
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body bg-secondary-subtle">
+                    <dl>
+                        <dt>Customer Name</dt>
+                        <dd><input type="text"  class="form-control" name="" id="txtCustomerName"></dd>
+                        <dt>Customer Phone Number</dt>
+                        <dd><input class="form-control" type="number" name="" id="txtMobileNumber"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed bg-danger text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Select Your Meal
+            </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body d-flex justify-content-around">
+                <div>
+                    <img src="../public/images/popcorn.png" width="300px">
+                    
+                    <div>
+                        <input type="radio" name="meal" id="meal1" value="Crispy Chicken">
+                        <span class="fs-3 fw-bold">Crispy Chicken</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../public/images/burger.png" width="300px">
+                    <div>
+                        <input type="radio" name="meal" value="Burger" id="meal2">
+                        <span class="fs-3 fw-bold">Burger</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed bg-danger text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Select ADD on's
+            </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body d-flex justify-content-around">
+               <div>
+                    <img src="../public/images/fries.png" width="300px">
+                    
+                    <div>
+                        <input type="checkbox"  name="optAddon" id="optAddon1">
+                        <span class="fs-3 fw-bold">Fries</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../public/images/popcorn.png" width="300px">
+                    <div>
+                        <input type="checkbox" name="optAddon" id="optAddon2">
+                        <span class="fs-3 fw-bold">Popcorn</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="generateBill" class="btn btn-danger w-100 border-white" data-bs-toggle="modal" data-bs-target="#exampleModal"disabled>Place Order</button>
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-danger" id="exampleModalLabel">Your Bill Summary</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <dl class="mb-0">
+                <dt>Customer Name</dt>
+                <dd id="billCustomerName"></dd>
+                <dt>Mobile</dt>
+                <dd id="billMobile"></dd>
+                <dt>Meal</dt>
+                <dd id="billMeal"></dd>
+                <dt>Add on's</dt>
+                <dd id="billAddons"></dd>
+                <dt>Total</dt>
+                <dd id="Total"></dd>
+            </dl>
+        </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script>
+        let checkDataCompletion = function (){
+            let customerName = document.getElementById("txtCustomerName").value.trim();
+            let customerPhone=document.getElementById("txtMobileNumber").value.trim();
+            let orders= document.getElementById("meal1").checked | document.getElementById("meal2").checked;
+
+            document.getElementById("generateBill").disabled = !(customerName && customerPhone && orders);
+        }
+
+        document.getElementById("txtCustomerName").addEventListener("input",checkDataCompletion);
+        document.getElementById("txtMobileNumber").addEventListener("input",checkDataCompletion);
+        document.getElementById("meal1").addEventListener("change",checkDataCompletion);
+        document.getElementById("meal2").addEventListener("change",checkDataCompletion);
+
+        document.getElementById("generateBill").addEventListener("click",function(){
+            document.getElementById("billCustomerName").textContent=document.getElementById("txtCustomerName").value;
+            document.getElementById("billMobile").textContent=document.getElementById("txtMobileNumber").value;
+    
+            let mealCost=0;
+            if( document.getElementById("meal1").checked){
+                document.getElementById("billMeal").textContent=document.getElementById("meal1").value;
+                mealCost = 200;
+            }
+            if( document.getElementById("meal2").checked){
+                document.getElementById("billMeal").textContent=document.getElementById("meal2").value;
+                mealCost = 250;
+            }
+    
+            let addOns=0;
+            if( document.getElementById("optAddon1").checked){
+                document.getElementById("billAddons").innerHTML=`<span>Fries</span> <br>`
+                addOns = 200;
+            }
+            if( document.getElementById("optAddon2").checked){
+                document.getElementById("billAddons").innerHTML +=`<span>Popcorn</span>`;
+                addOns += 200;
+            }
+            let total= mealCost+ addOns;
+            document.getElementById("Total").textContent=total;
+
+        })
+
+
+    </script>
+</body>
+</html>

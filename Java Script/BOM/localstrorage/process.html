@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function processLogic() {
+              let username = localStorage.getItem("username");
+              if (username === null) {
+                    location.href='index.html';
+              } else {
+                  document.querySelector("p").innerHTML = `Hello! ${username}`;
+              }
+        }
+        function signOut() {
+             localStorage.removeItem("username");
+             location.href='index.html';
+        }
+    </script>
+</head>
+<body onload="processLogic()">
+        <h3> User Details </h3>
+        <button onclick="signOut()">Signout</button>
+        <p></p>
+</body>
+</html>

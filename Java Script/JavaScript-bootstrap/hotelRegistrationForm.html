@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="m-3" style="background-color: #cd7dd1;">
+    <img src="../public/images/hotel banner2.png" width="100%"  style="border: 1px solid white; border-radius: 15px;">
+    <div class="accordion " id="accordionExample" >
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed text-dark" style="background: linear-gradient(90deg,#d2b0e9, #6533bd,#3b3297);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               <span style="font-weight: bold;">Customer Details</span> 
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body bg-secondary-subtle">
+                    <dl>
+                        <dt>Customer Name</dt>
+                        <dd><input type="text" class="form-control" id="txtCustomerName"></dd>
+                        <dt>Check in Date</dt>
+                        <dd><input class="form-control" type="date" id="txtCheckInDate"></dd>
+                        <dt>Total No of Days</dt>
+                        <dd><input class="form-control" type="number" id="txtTotalDays"></dd>
+                        <dt>Total No of Persons</dt>
+                        <dd><input class="form-control" type="number" id="txtTotalPersons"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed bg-light text-dark" style="background: linear-gradient(90deg,#d2b0e9, #6533bd,#3b3297);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+               <span style="font-weight: bold;">Room Type</span>
+            </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body d-flex justify-content-around">
+                <div>
+                    <img src="../public/images/delux_room.webp" width="300px">
+                    
+                    <div>
+                        <input type="radio" name="room" id="room1" value="Delux Room">
+                        <span class="fs-3 fw-bold">Delux Room</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../public/images/suite_room.png" width="300px">
+                    <div>
+                        <input type="radio" name="room" value="Suite Room" id="room2">
+                        <span class="fs-3 fw-bold">Suite Room</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed bg-light text-dark" style="background: linear-gradient(90deg,#d2b0e9, #6533bd,#3b3297);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <span style="font-weight: bold;">Eminties</span> 
+            </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body d-flex justify-content-around">
+               <div>
+                    <img src="../public/images/ac.png" width="300px">
+                    
+                    <div>
+                        <input type="checkbox"  name="opt" id="optAC">
+                        <span class="fs-3 fw-bold" >Air Conditioner</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../public/images/locker.png" width="300px" height="200px">
+                    <div>
+                        <input type="checkbox" name="opt" id="optLocker">
+                        <span class="fs-3 fw-bold">Locker</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed bg-light text-dark" style="background: linear-gradient(90deg,#d2b0e9, #6533bd,#3b3297);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <span style="font-weight: bold;">Advance Amount</span> 
+            </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-body d-flex justify-content-around">
+               <input type="number" class="form-control w-25" id="advanceAmount" style=" border: 2px solid black;">
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center m-3">
+        <button type="button" id="generateBill" class="btn btn-dark w-25 border-white p-2 fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal"disabled>Register</button>
+    </div>
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-light" id="exampleModalLabel">
+                Your Bill Summary
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <dl class="mb-0">
+            <d6t>Customer Name</dt>
+            <dd id="billCustomerName"></dd>
+            <dt>Check In Date</dt>
+            <dd id="billCheckInDate"></dd>
+            <dt>Total No of Days</dt>
+            <dd id="billTotalDays"></dd>
+            <dt>Total No of Persons</dt>
+            <dd id="billTotalPersons"></dd>
+            <dt>Room Type</dt>
+            <dd id="billRoomType"></dd>
+            <dt>Amenities</dt>
+            <dd id="billAmenities"></dd>
+            <dt>Advance Amount</dt>
+            <dd id="billAdvanceAmount"></dd>
+            <dt>Balance Amount</dt>
+            <dd id="billBalanceAmount"></dd>
+        </dl>
+        </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script>
+        let checkDataCompletion = function (){
+            let customerName = document.getElementById("txtCustomerName").value.trim();
+            let customerPhone=document.getElementById("txtMobileNumber").value.trim();
+            let orders= document.getElementById("meal1").checked | document.getElementById("meal2").checked;
+            let advanceAmount = document.getElementById("advanceAmount").value.trim();
+
+            document.getElementById("generateBill").disabled = !(customerName && customerPhone && orders && advanceAmount);
+        }
+
+        document.getElementById("txtCustomerName").addEventListener("input",checkDataCompletion);
+        document.getElementById("txtCheckInDate").addEventListener("input",checkDataCompletion);
+        document.getElementById("txtTotalDays").addEventListener("input",checkDataCompletion);
+        document.getElementById("txtTotalPersons").addEventListener("input",checkDataCompletion);
+        document.getElementById("room1").addEventListener("change",checkDataCompletion);
+        document.getElementById("room2").addEventListener("change",checkDataCompletion);
+
+        document.getElementById("advanceAmount").addEventListener("change",checkDataCompletion);
+
+
+        document.getElementById("generateBill").addEventListener("click",function(){
+            document.getElementById("billCustomerName").textContent=document.getElementById("txtCustomerName").value;
+            document.getElementById("billCheckInDate").textContent=document.getElementById("txtMobileNumber").value;
+            document.getElementById("billTotalDays").textContent=document.getElementById("txtMobileNumber").value;
+            document.getElementById("billCheckInDate").textContent=document.getElementById("txtMobileNumber").value;
+
+    
+            let mealCost=0;
+            if( document.getElementById("room1").checked){
+                document.getElementById("billMeal").textContent=document.getElementById("room1").value;
+                mealCost = 200;
+            }
+            if( document.getElementById("room2").checked){
+                document.getElementById("billMeal").textContent=document.getElementById("room2").value;
+                mealCost = 250;
+            }
+    
+            let addOns=0;
+            if( document.getElementById("optAddon1").checked){
+                document.getElementById("billAddons").innerHTML=`<span>Fries</span> <br>`
+                addOns = 200;
+            }
+            if( document.getElementById("optAddon2").checked){
+                document.getElementById("billAddons").innerHTML +=`<span>Popcorn</span>`;
+                addOns += 200;
+            }
+            let total= mealCost+ addOns;
+            document.getElementById("Total").textContent=total;
+
+        })
+
+
+    </script>
+</body>
+</html>

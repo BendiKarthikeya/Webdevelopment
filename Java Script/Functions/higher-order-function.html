@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const radius=[3,4,1,2]
+        const area = function(radius){
+            return (Math.PI * radius * radius).toFixed(2);
+        }
+        const circumfarence = function(radius){
+            return (Math.PI * 2 * radius).toFixed(2);
+        }
+        const diameter = function(radius){
+            return (2 * radius);
+        }
+
+        function calculate(radius,logic){
+            let output=[];
+            for(let i=0;i<radius.length;i++){
+                output.push(logic(radius[i]));
+            }
+            return output;
+        }
+        console.log(radius.map(area));
+    </script>
+</body>
+</html>

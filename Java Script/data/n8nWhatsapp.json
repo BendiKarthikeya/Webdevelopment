@@ -1,0 +1,245 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAt": "00:00"
+            },
+            {
+              "triggerAt": "00:30"
+            },
+            {
+              "triggerAt": "01:00"
+            },
+            {
+              "triggerAt": "01:30"
+            },
+            {
+              "triggerAt": "02:00"
+            },
+            {
+              "triggerAt": "02:30"
+            },
+            {
+              "triggerAt": "03:00"
+            },
+            {
+              "triggerAt": "03:30"
+            },
+            {
+              "triggerAt": "04:00"
+            },
+            {
+              "triggerAt": "04:30"
+            },
+            {
+              "triggerAt": "05:00"
+            },
+            {
+              "triggerAt": "05:30"
+            },
+            {
+              "triggerAt": "06:00"
+            },
+            {
+              "triggerAt": "06:30"
+            },
+            {
+              "triggerAt": "07:00"
+            },
+            {
+              "triggerAt": "07:30"
+            },
+            {
+              "triggerAt": "08:00"
+            },
+            {
+              "triggerAt": "08:30"
+            },
+            {
+              "triggerAt": "09:00"
+            },
+            {
+              "triggerAt": "09:30"
+            },
+            {
+              "triggerAt": "10:00"
+            },
+            {
+              "triggerAt": "10:30"
+            },
+            {
+              "triggerAt": "11:00"
+            },
+            {
+              "triggerAt": "11:30"
+            },
+            {
+              "triggerAt": "12:00"
+            },
+            {
+              "triggerAt": "12:30"
+            },
+            {
+              "triggerAt": "13:00"
+            },
+            {
+              "triggerAt": "13:30"
+            },
+            {
+              "triggerAt": "14:00"
+            },
+            {
+              "triggerAt": "14:30"
+            },
+            {
+              "triggerAt": "15:00"
+            },
+            {
+              "triggerAt": "15:30"
+            },
+            {
+              "triggerAt": "16:00"
+            },
+            {
+              "triggerAt": "16:30"
+            },
+            {
+              "triggerAt": "17:00"
+            },
+            {
+              "triggerAt": "17:30"
+            },
+            {
+              "triggerAt": "18:00"
+            },
+            {
+              "triggerAt": "18:30"
+            },
+            {
+              "triggerAt": "19:00"
+            },
+            {
+              "triggerAt": "19:30"
+            },
+            {
+              "triggerAt": "20:00"
+            },
+            {
+              "triggerAt": "20:30"
+            },
+            {
+              "triggerAt": "21:00"
+            },
+            {
+              "triggerAt": "21:30"
+            },
+            {
+              "triggerAt": "22:00"
+            },
+            {
+              "triggerAt": "22:30"
+            },
+            {
+              "triggerAt": "23:00"
+            },
+            {
+              "triggerAt": "23:30"
+            }
+          ]
+        },
+        "triggerType": "every30Minutes"
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "file": {
+          "mode": "path",
+          "path": "/path/to/your/meetings.xlsx"
+        },
+        "options": {}
+      },
+      "name": "Read Excel File",
+      "type": "n8n-nodes-base.readExcelFile",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const now = new Date();\n\nconst meetingsToSend = items.filter(item => {\n  const meetingTime = new Date(item.json.meetingTime);\n  \n  const sixHoursBefore = new Date(meetingTime.getTime() - (6 * 60 * 60 * 1000));\n  \n  const timeDifferenceInMinutes = (sixHoursBefore.getTime() - now.getTime()) / (60 * 1000);\n\n  // Check if the reminder time is within the next 30 minutes\n  return timeDifferenceInMinutes >= 0 && timeDifferenceInMinutes <= 30;\n});\n\nreturn meetingsToSend;",
+        "options": {}
+      },
+      "name": "Filter and Check Time",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        750,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "message": "Hi {{ $json.recipientName }},\n\nJust a friendly reminder: Your meeting about '{{ $json.meetingTopic }}' is in 6 hours!\n\nMeeting Time: {{ $json.meetingTime }}",
+        "phoneOrGroupId": "whatsapp:+91{{ $json.phoneNumber }}",
+        "options": {
+          "recipientType": "individual"
+        }
+      },
+      "name": "WhatsApp",
+      "type": "n8n-nodes-whatsapp.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        300
+      ],
+      "credentials": {
+        "whatsAppApi": "YOUR_WHATSAPP_API_CREDENTIALS"
+      }
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Read Excel File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read Excel File": {
+      "main": [
+        [
+          {
+            "node": "Filter and Check Time",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Filter and Check Time": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  }
+}

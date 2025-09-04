@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+       if (location.protocol === "http:") {
+           document.write(`
+                   YOUR IP : ${location.host} <br>
+                   YOUR PORTNO : ${location.port} <br>
+                   URL : ${location.href}<br>
+                   search : ${location.search}<br>
+                   protocol : ${location.protocol}<br>
+                   hash : ${location.hash}<br>
+           `); 
+
+           // Show a message if hash is present
+           if (location.hash) {
+               document.write(`<b>Hash is present in the URL: ${location.hash}</b><br>`);
+           }
+
+       } else {
+            document.write('Please run the app using live server - You are not using Live Server');
+       }
+      
+    </script>
+</head>
+<body>
+    <button onclick="window.open(location.pathname + '#demo', '_blank')">Open BOM Section</button>
+</body>
+</html>

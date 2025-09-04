@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Bank{
+            #balance = 0;
+            set depositAmount(amount){
+                if(amount >0)
+            {
+                this.#balance += amount;
+            }
+                
+            }
+            get balance(){
+                return this.#balance;
+            }
+        }
+        let b = new Bank();
+        let amount = Number(prompt("enter the amount"));
+        b.depositAmount = amount;
+        b.depositAmount = 3000;
+        console.log(b.balance);
+        
+        
+    </script>
+</body>
+</html>

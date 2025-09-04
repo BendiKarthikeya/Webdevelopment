@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Carousel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style type="text/css">
+    body {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body class="d-flex justify-content-center align-items-center" onload="startCarousel()">
+  <div class="card text-center">
+    <div class="card-header">
+      <div id="lblTitle"></div>
+    </div>
+    <div class="card-body">
+      <div id="lblPrice" class="justify-content-end mb-2"></div>
+      <img src="" alt="Loading" id="lblImage" height="200px" width="300px">
+    </div>
+    <div class="card-footer">
+      <span>Previous</span>
+      <button class="bi bi-pause btn btn-primary" id="pauseBtn"></button>
+      <button class="bi bi-play btn btn-primary" id="playBtn"></button>
+      <span>Next</span>
+    </div>
+  </div>
+  <script>
+    let productId = 1;
+    let timer = null;
+
+    function startCarousel() {
+      loadProduct();
+      timer = setTimeout(loadProduct, 2000);
+
+      document.getElementById("pauseBtn").addEventListener("click", function () {
+        clearTimeout(timer);
+      });
+
+      document.getElementById("playBtn").addEventListener("click", function () {
+          timer = setTimeout(loadProduct, 2000);
+      });
+    }
+
+    async function loadProduct() {
+      try {
+        document.getElementById("lblTitle").textContent = "Loading...";
+        if (productId > 20) {
+          productId = 1;
+        }
+
+        let URL = `https://fakestoreapi.com/products/${productId}`;
+        let response = await fetch(URL);
+
+        if (!response.ok) {
+          throw new Error("Product not found");
+        }
+
+        let product = await response.json();
+
+        document.getElementById("lblTitle").textContent = product.title;
+        document.getElementById("lblImage").src = product.image;
+        document.getElementById("lblPrice").innerHTML =
+          `<span class="bi bi-tag-fill bg-danger p-1"></span>
+           <span class="bi bi-currency-dollar bg-danger p-1">${product.price}</span>`;
+      } catch (error) {
+        document.getElementById("lblTitle").textContent = error.message;
+        document.getElementById("lblImage").src = "";
+        document.getElementById("lblPrice").innerHTML = "";
+        console.error("Error fetching product:", error);
+      } finally {
+        productId++;
+        timer = setTimeout(loadProduct, 2000);
+      }
+    }
+  </script>
+</body>
+</html>
